@@ -8,9 +8,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 15,
+    marginTop: 16,
   },
   headerInput: {
-    height: 32,
+    height: 40,
     flexDirection: 'row',
     // backgroundColor: 'black',
     alignItems: 'center',
@@ -18,10 +19,14 @@ const styles = StyleSheet.create({
     borderColor: '#F0F1FA',
     flex: 1,
     borderRadius: 16,
+    margin: 10,
+    paddingHorizontal: 6,
   },
   searchArea: {
     flex: 1,
     fontSize: 12,
+    // backgroundColor: 'pink',
+    
   },
 });
 

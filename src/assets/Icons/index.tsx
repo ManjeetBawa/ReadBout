@@ -1,8 +1,6 @@
-import Vector from './Vector.svg';
-import VectorSearch from './VectorSearch.svg';
 import Bell from './Bell.svg';
+import VectorSearch from './VectorSearch.svg'
 export const Icons = {
-  Vector,
-  VectorSearch,
   Bell,
+  VectorSearch,
 };
