@@ -1,11 +1,8 @@
-import React, { Component } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import React from 'react';
 import Navigation from './navigation';
+import Splash from './screens/splash';
 const App = () => {
-    return(
-        <Navigation/>
-        
-    );
+  return <Navigation />;
 };
 
 export default App;
