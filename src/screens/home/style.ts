@@ -27,13 +27,14 @@ const styles = StyleSheet.create({
   searchArea: {
     flex: 1,
     fontSize: 12,
+    fontFamily: fonts.REGULAR,
     // backgroundColor: 'pink',
   },
   BelliIcon:{
     paddingRight: 10,
   },
   Carousel: {
-    marginVertical: 15,
+    marginTop: 15,
     // backgroundColor:'black'
   },
   SeeMoreSection:{
@@ -43,17 +44,19 @@ const styles = StyleSheet.create({
   },
   seeMoreBox: {
     flexDirection: 'row',
+  
     justifyContent: 'space-between',
     marginVertical: 15,
     paddingHorizontal: 15,
   },
   latestNews: {
     fontSize: 20,
-    fontFamily: fonts.BOLD,
+    fontFamily: fonts.TINO_BOLD,
+    color: 'black'
   },
   SeeMore: {
     fontSize: 15,
-    fontFamily: fonts.BOLD,
+    fontFamily: fonts.TINO_BOLD,
     justifyContent: 'center',
     color: '#0080FF',
     paddingHorizontal: 5,
@@ -74,7 +77,10 @@ const styles = StyleSheet.create({
   body: {
     color: '#fff',
     marginHorizontal: 16,
-
+  },
+  filterItems:{
+    marginVertical: 24,
+        marginHorizontal: 15,
   }
 });
 

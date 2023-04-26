@@ -3,7 +3,7 @@
   "data": [
     {
       "path": "src/assets/fonts/index.tsx",
-      "sha1": "9cfa16fcea2692405a65e5bdb0dcf5ece7b1758d"
+      "sha1": "6a72023e72a22d72b427a279a963b07906596eb3"
     },
     {
       "path": "src/assets/fonts/Nunito-Black.ttf",
@@ -68,6 +68,22 @@
     {
       "path": "src/assets/fonts/Nunito-SemiBoldItalic.ttf",
       "sha1": "c791b46c4d5d94712fb3c1bcb14d07746febebdf"
+    },
+    {
+      "path": "src/assets/fonts/Tinos-Bold.ttf",
+      "sha1": "1c12721c83f0d78300a084656571df1c476d93e4"
+    },
+    {
+      "path": "src/assets/fonts/Tinos-BoldItalic.ttf",
+      "sha1": "f2e344daae0768a51d1423f88b6177455ef7282e"
+    },
+    {
+      "path": "src/assets/fonts/Tinos-Italic.ttf",
+      "sha1": "809bc75ff31366d7e055dfc14d4a9cdf5e44eca7"
+    },
+    {
+      "path": "src/assets/fonts/Tinos-Regular.ttf",
+      "sha1": "290609e84b7aaf8ebd7c7b3e056d99f3716c2316"
     }
   ]
 }
