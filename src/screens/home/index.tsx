@@ -1,77 +1,109 @@
 import React, {Component} from 'react';
-import {Text, View,TouchableOpacity,TextInput, Image, Dimensions} from 'react-native';
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  TextInput,
+  Image,
+  Dimensions,
+  ImageBackground,
+  FlatList
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import styles from './style';
 import {Icons} from '../../assets/Icons';
-import fonts from '../../assets/fonts';
-
-
 
 const Home = () => {
- const SLIDER_WIDTH = Dimensions.get('screen').width ;
- const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.7)
+  const SLIDER_WIDTH = Dimensions.get('screen').width;
+  const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
 
   const data = [
     {
-      title: "Aenean leo",
-      body: "Ut tincidunt tincidunt erat. Sed cursus turpis vitae tortor. Quisque malesuada placerat nisl. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.",
-      imgUrl: "https://picsum.photos/id/11/200/300",
+      title: 'Aenean leo becomes the new president of the united states',
+      Author: 'by John Franc',
+      body: '“I’m going to say this very bluntly again,” he added. “Buy them only if you’re prepared to lose all your money.”',
+      imgUrl: 'https://picsum.photos/id/11/200/300',
     },
     {
-      title: "In turpis",
-      body: "Aenean ut eros et nisl sagittis vestibulum. Donec posuere vulputate arcu. Proin faucibus arcu quis ante. Curabitur at lacus ac velit ornare lobortis. ",
-      imgUrl: "https://picsum.photos/id/10/200/300",
+      title: 'Aenean leo becomes the new president of the Great Britain',
+      Author: 'by SuperUser',
+      body: 'Cryptocurrencies “have no intrinsic value” and people who invest in them should be prepared to lose all ',
+      imgUrl: 'https://picsum.photos/id/10/200/300',
     },
     {
-      title: "Lorem Ipsum",
-      body: "Phasellus ullamcorper ipsum rutrum nunc. Nullam quis ante. Etiam ultricies nisi vel augue. Aenean tellus metus, bibendum sed, posuere ac, mattis non, nunc.",
-      imgUrl: "https://picsum.photos/id/12/200/300",
+      title: 'RCB wins the world cup',
+      Author: 'by Metlle',
+      body: 'Andrew Bailey said. Digital currencies like bitcoin, ether and even dogecoin have been on a tear this year,',
+      imgUrl: 'https://picsum.photos/id/12/200/300',
     },
   ];
-  const Search =()=> {
-    console.log('Search Clicked');
-  }
+  const Search = () => {
+    console.log('Search Clicked', ITEM_WIDTH, SLIDER_WIDTH);
+  };
 
   const CarouselCardItem = ({item}) => {
     return (
-    <Image
-        source={{ uri: item.imgUrl }}
-        style={{height: 250, width: ITEM_WIDTH}}
-      />
-    // <Text>item.title</Text>
+      <View>
+        <ImageBackground
+          source={{uri: item.imgUrl}}
+          style={{height: 250, width: ITEM_WIDTH}}
+          >
+            <View style={styles.uperimage}>
+              <Text style={styles.author}>{item.Author}</Text>
+              <Text style={styles.title}>{item.title}</Text>
+            </View>
+            <Text style={styles.body}>{item.body}</Text>
+        </ImageBackground>
+      </View>
     );
+  };
+
+  const filter = ({item})=> {
+    console.log(item)
+    return (
+      <View>
+        <Text>{item.Author}</Text>
+      </View>
+    )
   }
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerInput}>
           <TextInput
-            returnKeyType='search'
+            returnKeyType="search"
             placeholder="DogeCoin to the Moon..."
             // placeholderTextColor={'#fff'}
             style={styles.searchArea}
             onBlur={Search}
           />
-          <TouchableOpacity onPress={Search} >
+          <TouchableOpacity onPress={Search}>
             <Icons.VectorSearch width={16} height={14} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity >
+        <TouchableOpacity style={styles.BelliIcon}>
           <Icons.Bell width={40} height={36} />
         </TouchableOpacity>
       </View>
-    
-      <Carousel
-        data={data}
-        renderItem={CarouselCardItem}
-        sliderWidth={SLIDER_WIDTH}
-        itemWidth={ITEM_WIDTH}
-        useScrollView={true}
-      />
-      {/* <View>
-      <Text style={{fontFamily: fonts.BOLD, fontSize: 30}}>Hello world</Text>
-      </View> */}
-      <Image source={{ uri: "https://picsum.photos/id/12/200/300" }} style={{height:40,width:50}}/>
+
+      <View style={styles.seeMoreBox}>
+        <Text style={styles.latestNews}>Latest News</Text>
+        <TouchableOpacity style={styles.SeeMoreSection}>
+          <Text style={styles.SeeMore}>See More</Text>
+          <Icons.Arrow width={20} height={20} />
+        </TouchableOpacity>
+      </View>
+      {/* -----------------------------------------Carousel--------------------------------- */}
+      <View style={styles.Carousel}>
+        <Carousel
+          data={data}
+          renderItem={CarouselCardItem}
+          sliderWidth={SLIDER_WIDTH}
+          itemWidth={ITEM_WIDTH}
+          useScrollView={true}
+        />
+      </View>
+      <FlatList data={data} renderItem={filter} horizontal />
     </View>
   );
 };

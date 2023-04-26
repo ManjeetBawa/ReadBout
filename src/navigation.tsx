@@ -15,7 +15,7 @@ const Navigation = () => {
   useEffect(()=>{
     setTimeout(()=>{
       setShowSplash(false);
-    }, 4000)
+    }, 3000)
   }, [])
   return (
     <NavigationContainer>
