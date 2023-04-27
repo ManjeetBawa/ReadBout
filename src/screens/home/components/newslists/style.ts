@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         marginBottom: 8,
         // borderRadius: 80,
-        // backgroundColor: 'green'
+        // backgroundColor: 'black'
     },
     image: {
         width: '100%',

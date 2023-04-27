@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontFamily: fonts.REGULAR,
         marginHorizontal: 16,
-        marginBottom: 10,
+        marginBottom: 15,
     
       }
 })

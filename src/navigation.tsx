@@ -4,6 +4,7 @@ import Home from './screens/home';
 import { createStackNavigator } from '@react-navigation/stack';
 import Splash from './screens/splash';
 import { useEffect, useState } from 'react';
+import News from './screens/fullnews';
 
 // const BottomTabs = createBottomTabNavigator();
 
@@ -25,6 +26,7 @@ const Navigation = () => {
       <Stack.Navigator>
        {showSplash ?  <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} /> : null }
        <Stack.Screen name='Home' component={Home} options={{headerShown: false}} />
+       <Stack.Screen name='News' component={News} options={{headerShown: false}} />
       </Stack.Navigator>
 
     </NavigationContainer>

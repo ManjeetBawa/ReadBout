@@ -1,14 +1,22 @@
 import React from 'react';
-import { Text, FlatList,View, ImageBackground, Dimensions } from 'react-native';
+import { Text, Pressable,View, ImageBackground, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
+import {useNavigation} from '@react-navigation/native';
+
 import styles from './style';
 import data from '../data';
 const CarouselLoader = () => {
+  const navigation = useNavigation();
     const SLIDER_WIDTH = Dimensions.get('screen').width;
     const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.8);
     const CarouselCardItem = ({item}) => {
+      const OpenNews = () => {
+        console.log(item.key);
+        navigation.navigate('News');
+      }
         return (
-          <View style={{height:250,width: ITEM_WIDTH}}>
+          <View style={{height: 250,width: ITEM_WIDTH}}>
+            <Pressable onPress={()=>OpenNews(item)}>
             <ImageBackground
               source={{uri: item.imgUrl}}
               imageStyle={{ borderRadius: 8}}
@@ -19,6 +27,7 @@ const CarouselLoader = () => {
                 </View>
                 <Text style={styles.body}>{item.body}</Text>
             </ImageBackground>
+            </Pressable>
           </View>
         );
       };

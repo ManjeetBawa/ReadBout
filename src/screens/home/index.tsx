@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect, useState} from 'react';
+
 import {
   Text,
   View,
@@ -12,6 +13,7 @@ import Filterbutton from './components/filterbutton';
 import { ScrollView } from 'react-native-gesture-handler';
 import NewsList from './components/newslists';
 const Home = () => {
+  
   const Search = () => {
     console.log('Search Clicked');
   };
@@ -52,21 +54,6 @@ const Home = () => {
       <Filterbutton />
       </View>
       <NewsList/>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Hello</Text>
-      <Text style={{fontSize:30}}>Fghhh</Text>
     </ScrollView>
     </View>
   );

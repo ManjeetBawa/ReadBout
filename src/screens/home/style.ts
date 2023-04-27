@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingRight: 10,
   },
   Carousel: {
-    marginTop: 15,
+    marginVertical: 15,
     // backgroundColor:'black'
   },
   SeeMoreSection:{
@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
   },
   filterItems:{
-    marginVertical: 24,
-        marginHorizontal: 15,
+      marginBottom: 24,
+      marginHorizontal: 15,
   }
 });
 
