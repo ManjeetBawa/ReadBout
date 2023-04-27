@@ -12,7 +12,7 @@ const CarouselLoader = () => {
     const CarouselCardItem = ({item}) => {
       const OpenNews = () => {
         console.log(item.key);
-        navigation.navigate('News');
+        navigation.navigate('News',{item});
       }
         return (
           <View style={{height: 250,width: ITEM_WIDTH}}>

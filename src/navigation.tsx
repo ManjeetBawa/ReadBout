@@ -5,13 +5,27 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Splash from './screens/splash';
 import { useEffect, useState } from 'react';
 import News from './screens/fullnews';
+import MyComponent from './screens/Favourites';
 
-// const BottomTabs = createBottomTabNavigator();
+const BottomTabs = createBottomTabNavigator();
 
 const Navigation = () => {
   const Stack = createStackNavigator();
 
   const [showSplash, setShowSplash] = useState(true);
+
+  const DashboardNavigation = () => {
+    return (
+      <BottomTabs.Navigator
+        screenOptions={{header: () => null}}>
+        <BottomTabs.Screen
+          component={Home}
+          name='Home'
+        />
+        <BottomTabs.Screen name='MyComponent' component={MyComponent} options={{headerShown: false}} />
+      </BottomTabs.Navigator>
+    );
+  };
 
   useEffect(()=>{
     setTimeout(()=>{
@@ -20,13 +34,11 @@ const Navigation = () => {
   }, [])
   return (
     <NavigationContainer>
-      {/* <BottomTabs.Navigator>
-        <BottomTabs.Screen name="Home" component={Home} options={{headerShown: false}} />
-      </BottomTabs.Navigator> */}
       <Stack.Navigator>
        {showSplash ?  <Stack.Screen name="Splash" component={Splash} options={{headerShown: false}} /> : null }
-       <Stack.Screen name='Home' component={Home} options={{headerShown: false}} />
+       <Stack.Screen name='DashboardNavigation' component={DashboardNavigation} options={{headerShown: false}} />
        <Stack.Screen name='News' component={News} options={{headerShown: false}} />
+       
       </Stack.Navigator>
 
     </NavigationContainer>

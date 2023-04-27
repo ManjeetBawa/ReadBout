@@ -1,4 +1,4 @@
-import React, {Component, useEffect, useState} from 'react';
+import React, {Component, useEffect, useState,useRef} from 'react';
 
 import {
   Text,
@@ -13,7 +13,10 @@ import Filterbutton from './components/filterbutton';
 import { ScrollView } from 'react-native-gesture-handler';
 import NewsList from './components/newslists';
 const Home = () => {
-  
+  const searchref = useRef();
+  const searchIconHandler = () => {
+    searchref.current.focus();
+  };
   const Search = () => {
     console.log('Search Clicked');
   };
@@ -27,9 +30,11 @@ const Home = () => {
             placeholder="DogeCoin to the Moon..."
             // placeholderTextColor={'#fff'}
             style={styles.searchArea}
-            onBlur={Search}
+            // autoFocus={focus}
+            onEndEditing={Search}
+            ref={searchref}
           />
-          <TouchableOpacity onPress={Search}>
+          <TouchableOpacity onPress={searchIconHandler}>
             <Icons.VectorSearch width={16} height={14} />
           </TouchableOpacity>
         </View>
