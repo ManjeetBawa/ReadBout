@@ -11,7 +11,7 @@ const Filterbutton = ({getfilter}:filterProps) => {
   const [selectedId, setSelectedId] = useState<string>('0');
       const NewsOpener = (item) => {
         setSelectedId(item.key);
-        getfilter(item.key);
+        getfilter(item.Author);
       }
       const filter = ({item}: any)=> { 
         const backgroundColor = item.key === selectedId ? '#FF3A44' : '#fff';

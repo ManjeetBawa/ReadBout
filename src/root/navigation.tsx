@@ -6,6 +6,8 @@ import Splash from '../screens/splash';
 import {useEffect, useState} from 'react';
 import News from '../screens/fullnews';
 import MyComponent from '../screens/Favourites';
+import {Icons} from '../assets/Icons';
+import styles from './styles';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -16,8 +18,26 @@ const Navigation = () => {
 
   const DashboardNavigation = () => {
     return (
-      <BottomTabs.Navigator>
-        <BottomTabs.Screen component={Home} name="Home" />
+      <BottomTabs.Navigator
+        screenOptions={{
+          headerShown: false,
+          tabBarStyle: styles.bottomTab,
+          tabBarLabelStyle: styles.tabBarLabelStyle,
+          tabBarActiveTintColor:'#FF3A44'
+        }}>
+        <BottomTabs.Screen
+          component={Home}
+          name="Home"
+          options={{
+            tabBarIcon: ({focused}) =>
+              focused ? (
+                <Icons.HomeActive height={25} width={25} />
+              ) : (
+                <Icons.HomeInactive  height={25} width={25} />
+              ),
+              
+          }}
+        />
         <BottomTabs.Screen
           name="MyComponent"
           component={MyComponent}
@@ -30,7 +50,7 @@ const Navigation = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowSplash(false);
-    }, 3000);
+    }, 2000);
   }, []);
   return (
     <NavigationContainer>

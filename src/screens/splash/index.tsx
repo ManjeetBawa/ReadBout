@@ -7,7 +7,7 @@ const Splash = () => {
   return (
     <View style={{flex:1, alignItems: 'center', margin:0}}>
       <LottieView
-        source={require('./waveloading.json')}
+        source={require('./fetch.json')}
         autoPlay
         loop={false}
         resizeMode='cover'
