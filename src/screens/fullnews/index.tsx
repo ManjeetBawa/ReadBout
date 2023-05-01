@@ -7,9 +7,9 @@ const News = (params) => {
     const item = params.route.params.item;
     return (
         <View style={styles.container}>
-            <Image source={{uri: item.imgUrl}} style={styles.image}/>
+            <Image source={{uri: item.urlToImage?item.urlToImage:'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA='}} style={styles.image}/>
             <ScrollView style={styles.textBox}>
-            <Text style={styles.text}>{item.body}</Text>
+            <Text style={styles.text}>{item.description}</Text>
             </ScrollView>
         </View>
     );

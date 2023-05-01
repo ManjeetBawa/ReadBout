@@ -1,6 +1,6 @@
 import React, {Component, useEffect, useState, useRef} from 'react';
 
-import {Text, View, TouchableOpacity, TextInput} from 'react-native';
+import {Text, View, TouchableOpacity, TextInput,RefreshControl} from 'react-native';
 import CarouselLoader from './components/carousel';
 import styles from './style';
 import {Icons} from '../../assets/Icons';
@@ -8,8 +8,12 @@ import {Strings} from '../strings';
 import Filterbutton from './components/filterbutton';
 import {ScrollView} from 'react-native-gesture-handler';
 import NewsList from './components/newslists';
+import { useQuery } from 'react-query';
+import axios from 'axios';
 const Home = () => {
-  const [filter, setfilter] = useState('1');
+ 
+  const [refreshing,setRefreshing] = useState<boolean>(false);
+  const [filter, setfilter] = useState<string>('business');
   const searchref = useRef();
   const searchIconHandler = () => {
     searchref.current.focus();
@@ -21,6 +25,13 @@ const Home = () => {
   const getfilter = (value: string) => {
     setfilter(value);
   };
+  const handleRefresh = () => {
+    setRefreshing(true);
+    setTimeout(() => {
+      setRefreshing(false);
+      console.log(refreshing);
+    }, 2000);
+  }
   return (
     <View style={styles.container}>
       {/* ------------------Header------------ */}
@@ -52,15 +63,17 @@ const Home = () => {
         </TouchableOpacity>
       </View>
       {/* -----------------------------------------Carousel--------------------------------- */}
-      <ScrollView>
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={handleRefresh}/>
+      }>
         <View style={styles.Carousel}>
-          <CarouselLoader />
+          <CarouselLoader isrefreshing = {refreshing}/>
         </View>
         <View style={styles.filterItems}>
           <Filterbutton getfilter={val => getfilter(val)} />
         </View>
         <View>
-          <NewsList />
+          <NewsList category = {filter} isrefreshing = {refreshing}/>
         </View>
       </ScrollView>
     </View>

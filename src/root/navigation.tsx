@@ -5,9 +5,9 @@ import {createStackNavigator} from '@react-navigation/stack';
 import Splash from '../screens/splash';
 import {useEffect, useState} from 'react';
 import News from '../screens/fullnews';
-import MyComponent from '../screens/Favourites';
 import {Icons} from '../assets/Icons';
 import styles from './styles';
+import Favourite from '../screens/Favourite';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -39,9 +39,14 @@ const Navigation = () => {
           }}
         />
         <BottomTabs.Screen
-          name="MyComponent"
-          component={MyComponent}
-          options={{headerShown: false}}
+          name="Favourite"
+          component={Favourite}
+          options={{headerShown: false,tabBarIcon: ({focused}) =>
+          focused ? (
+            <Icons.FavActive height={25} width={25} />
+          ) : (
+            <Icons.FavInactive  height={25} width={25} />
+          ),}}
         />
       </BottomTabs.Navigator>
     );

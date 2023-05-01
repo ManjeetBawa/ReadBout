@@ -3,22 +3,22 @@ import { Text, FlatList,View, Pressable, TouchableOpacity } from 'react-native';
 import { useQuery } from 'react-query';
 
 import styles from './style';
-import data from '../data';
+import data from './category';
 interface filterProps{
   getfilter:(value:string)=>void;
 }
 const Filterbutton = ({getfilter}:filterProps) => {
-  const [selectedId, setSelectedId] = useState<string>('0');
+  const [selectedId, setSelectedId] = useState<string>('business');
       const NewsOpener = (item) => {
-        setSelectedId(item.key);
-        getfilter(item.Author);
+        setSelectedId(item.value);
+        getfilter(item.value);
       }
       const filter = ({item}: any)=> { 
-        const backgroundColor = item.key === selectedId ? '#FF3A44' : '#fff';
-        const color = item.key === selectedId ? '#fff' : '#000';
+        const backgroundColor = item.value === selectedId ? '#FF3A44' : '#fff';
+        const color = item.value === selectedId ? '#fff' : '#000';
         return (
           <Pressable onPress={()=>NewsOpener(item)}>
-            <Text style={[styles.item,{backgroundColor},{color}]}>{item.Author}</Text>
+            <Text style={[styles.item,{backgroundColor},{color}]}>{item.value}</Text>
           </Pressable>
         );
       };
