@@ -1,15 +1,13 @@
 import React, {Component, useEffect, useState, useRef} from 'react';
 
-import {Text, View, TouchableOpacity, TextInput,RefreshControl} from 'react-native';
+import {Text, View, TouchableOpacity, TextInput,RefreshControl,ScrollView} from 'react-native';
 import CarouselLoader from './components/carousel';
 import styles from './style';
 import {Icons} from '../../assets/Icons';
 import {Strings} from '../strings';
 import Filterbutton from './components/filterbutton';
-import {ScrollView} from 'react-native-gesture-handler';
+
 import NewsList from './components/newslists';
-import { useQuery } from 'react-query';
-import axios from 'axios';
 const Home = () => {
  
   const [refreshing,setRefreshing] = useState<boolean>(false);
@@ -19,8 +17,8 @@ const Home = () => {
     searchref.current.focus();
   };
   const Search = () => {
-    console.log('Search Clicked');
-    console.log('filtervalue  ', filter);
+    // console.log('Search Clicked');
+    // console.log('filtervalue  ', filter);
   };
   const getfilter = (value: string) => {
     setfilter(value);
@@ -30,7 +28,7 @@ const Home = () => {
     setTimeout(() => {
       setRefreshing(false);
       console.log(refreshing);
-    }, 2000);
+    }, 1000);
   }
   return (
     <View style={styles.container}>
@@ -66,6 +64,7 @@ const Home = () => {
       <ScrollView refreshControl={
         <RefreshControl refreshing={refreshing} onRefresh={handleRefresh}/>
       }>
+        <View>
         <View style={styles.Carousel}>
           <CarouselLoader isrefreshing = {refreshing}/>
         </View>
@@ -74,6 +73,7 @@ const Home = () => {
         </View>
         <View>
           <NewsList category = {filter} isrefreshing = {refreshing}/>
+        </View>
         </View>
       </ScrollView>
     </View>

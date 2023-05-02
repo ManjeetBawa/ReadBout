@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, Pressable,View, ImageBackground, Dimensions } from 'react-native';
+import { Text, Pressable,View, ImageBackground, Dimensions,ActivityIndicator } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import LottieView from 'lottie-react-native';
 
 import styles from './style';
 // import data from '../data';
@@ -19,7 +20,7 @@ const CarouselLoader = ({isrefreshing}: prop) => {
   });
 
   if (isLoading) {
-    return <View><Text>Loading...</Text></View>;
+    return  <ActivityIndicator />
   }
 
   if (error) {
@@ -28,6 +29,7 @@ const CarouselLoader = ({isrefreshing}: prop) => {
 
   if(isrefreshing)
   {
+    console.log('refetching carousel');
     refetch();
   }
 

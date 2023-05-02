@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Text, FlatList, View, ImageBackground, Pressable} from 'react-native';
+import {Text, FlatList, View, ImageBackground, Pressable,ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
 import data from '../data';
@@ -18,7 +18,7 @@ const NewsList = ({category,isrefreshing}:Props) => {
   });
 
   if (isLoading) {
-    return <View><Text>Loading...</Text></View>;
+    return <ActivityIndicator/>;
   }
 
   if (error) {
@@ -26,6 +26,7 @@ const NewsList = ({category,isrefreshing}:Props) => {
   }
   if(isrefreshing)
   {
+    console.log('refetching newslist');
     refetch();
   }
 
