@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState, useRef} from 'react';
-
+import { useNavigation } from '@react-navigation/native';
 import {Text, View, TouchableOpacity, TextInput,RefreshControl,ScrollView} from 'react-native';
 import CarouselLoader from './components/carousel';
 import styles from './style';
@@ -9,16 +9,19 @@ import Filterbutton from './components/filterbutton';
 
 import NewsList from './components/newslists';
 const Home = () => {
- 
+  const navigation = useNavigation();
   const [refreshing,setRefreshing] = useState<boolean>(false);
   const [filter, setfilter] = useState<string>('business');
+  const [searchval,setSearchval] = useState('');
   const searchref = useRef();
   const searchIconHandler = () => {
     searchref.current.focus();
   };
   const Search = () => {
-    // console.log('Search Clicked');
-    // console.log('filtervalue  ', filter);
+    console.log('Search Clicked');
+    if(!(searchval.trim()==='')){
+      navigation.navigate('SearchItem',{searchval});
+    }
   };
   const getfilter = (value: string) => {
     setfilter(value);
@@ -37,10 +40,12 @@ const Home = () => {
         <View style={styles.headerInput}>
           <TextInput
             returnKeyType="search"
+            value={searchval}
             placeholder="DogeCoin to the Moon..."
             // placeholderTextColor={'#fff'}
             style={styles.searchArea}
             // autoFocus={focus}
+            onChangeText={(val)=>setSearchval(val)}
             onEndEditing={Search}
             ref={searchref}
           />

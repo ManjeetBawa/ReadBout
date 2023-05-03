@@ -15,7 +15,7 @@ interface prop {
 const CarouselLoader = ({isrefreshing}: prop) => {
 
    const { isLoading, error, data ,refetch} = useQuery('LatestNews', async () => {
-    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=ba98ff1447a14572bdf276236083a22c');
+    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=a2f0f00c594e483a8b69a5db16b329da');
     return response.data;
   });
 

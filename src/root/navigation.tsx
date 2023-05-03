@@ -8,6 +8,7 @@ import News from '../screens/fullnews';
 import {Icons} from '../assets/Icons';
 import styles from './styles';
 import Favourite from '../screens/Favourite';
+import SearchItem from '../screens/searchPage';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -77,6 +78,12 @@ const Navigation = () => {
           component={News}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="SearchItem"
+          component={SearchItem}
+          options={{headerShown: false}}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

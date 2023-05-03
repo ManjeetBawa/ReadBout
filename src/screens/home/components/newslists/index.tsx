@@ -13,7 +13,7 @@ const NewsList = ({category,isrefreshing}:Props) => {
   console.log('category',category);
   const navigation = useNavigation();
   const { isLoading, error, data,refetch } = useQuery(`${category}`, async () => {
-    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&category='+`${category}`+'&apiKey=ba98ff1447a14572bdf276236083a22c');
+    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&category='+`${category}`+'&apiKey=a2f0f00c594e483a8b69a5db16b329da');
     return response.data;
   });
 
