@@ -4,7 +4,7 @@ import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
 import { useQuery } from 'react-query';
 import axios from 'axios';
-import LottieView from 'lottie-react-native';
+import { BASE_URL } from '../../../../services/endpoints';
 
 import styles from './style';
 // import data from '../data';
@@ -15,12 +15,12 @@ interface prop {
 const CarouselLoader = ({isrefreshing}: prop) => {
 
    const { isLoading, error, data ,refetch} = useQuery('LatestNews', async () => {
-    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&apiKey=a2f0f00c594e483a8b69a5db16b329da');
+    const response = await axios.get(BASE_URL+'/top-headlines?country=in&apiKey=a2f0f00c594e483a8b69a5db16b329da');
     return response.data;
   });
 
   if (isLoading) {
-    return  <ActivityIndicator />
+    return  <ActivityIndicator color={'#FF3A44'} size={'large'}/>
   }
 
   if (error) {

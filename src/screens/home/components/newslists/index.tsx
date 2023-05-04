@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {Text, FlatList, View, ImageBackground, Pressable,ActivityIndicator} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
-import data from '../data';
+import { BASE_URL } from '../../../../services/endpoints';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 interface Props {
@@ -13,12 +13,12 @@ const NewsList = ({category,isrefreshing}:Props) => {
   console.log('category',category);
   const navigation = useNavigation();
   const { isLoading, error, data,refetch } = useQuery(`${category}`, async () => {
-    const response = await axios.get('https://newsapi.org/v2/top-headlines?country=in&category='+`${category}`+'&apiKey=a2f0f00c594e483a8b69a5db16b329da');
+    const response = await axios.get(BASE_URL+'/top-headlines?country=in&category='+`${category}`+'&apiKey=a2f0f00c594e483a8b69a5db16b329da');
     return response.data;
   });
 
   if (isLoading) {
-    return <ActivityIndicator/>;
+    return <View><ActivityIndicator color={'#FF3A44'} size={'large'}/></View>;
   }
 
   if (error) {

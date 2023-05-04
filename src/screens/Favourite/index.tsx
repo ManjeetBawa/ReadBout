@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {useQuery} from 'react-query';
 import axios from 'axios';
+import NetInfo from "@react-native-community/netinfo";
 
 const Favourite = () => {
   const { isLoading, error, data:everything ,refetch} = useQuery('try', async () => {
@@ -42,7 +43,8 @@ const Favourite = () => {
 
   return (
     <View>
-      <FlatList data={everything.articles} renderItem={renderItem}/>
+      {/* {NetInfo.addEventListener()} */}
+      {/* <FlatList data={everything.articles} renderItem={renderItem}/> */}
     </View>
   );
 };

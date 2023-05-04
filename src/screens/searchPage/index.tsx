@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,7 @@ import { useNavigation } from '@react-navigation/native';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import styles from './style';
+import { BASE_URL } from '../../services/endpoints';
 
 const SearchItem = prop => {
     const navigation = useNavigation();
@@ -19,7 +20,7 @@ const SearchItem = prop => {
   console.log(prop.route.params.searchval);
   const {isLoading, error, data, refetch} = useQuery('SearchApi', async () => {
     const response = await axios.get(
-      'https://newsapi.org/v2/everything?q=' +
+      BASE_URL+'/everything?q=' +
         `${searchitem}` +
         '&apiKey=a2f0f00c594e483a8b69a5db16b329da',
     );
@@ -28,7 +29,7 @@ const SearchItem = prop => {
   });
 
   if (isLoading) {
-    return <ActivityIndicator />;
+    return <View style={styles.Loading}><ActivityIndicator color={'#FF3A44'} size={'large'}/></View>;
   }
 
   if (error) {
@@ -38,6 +39,7 @@ const SearchItem = prop => {
       </View>
     );
   }
+  
   const To_fullnews = (item) => {
     navigation.navigate('News',{item})
   }
