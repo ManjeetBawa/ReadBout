@@ -31,8 +31,9 @@ const Home = () => {
     setTimeout(() => {
       setRefreshing(false);
       console.log(refreshing);
-    }, 1000);
+    }, 1500);
   }
+
   return (
     <View style={styles.container}>
       {/* ------------------Header------------ */}

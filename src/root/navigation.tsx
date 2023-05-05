@@ -1,4 +1,4 @@
-import { NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screens/home';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -91,7 +91,6 @@ const Navigation = () => {
             options={{headerShown: false}}
           />
         ) : null}
-
         <Stack.Screen
           name="DashboardNavigation"
           component={DashboardNavigation}

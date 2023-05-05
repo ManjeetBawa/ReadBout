@@ -17,6 +17,11 @@ const NewsList = ({category,isrefreshing}:Props) => {
     return response.data;
   });
 
+  if(isrefreshing)
+  {
+    console.log('refetching newslist');
+    refetch();
+  }
   if (isLoading) {
     return <View><ActivityIndicator color={'#FF3A44'} size={'large'}/></View>;
   }
@@ -24,11 +29,7 @@ const NewsList = ({category,isrefreshing}:Props) => {
   if (error) {
     return <View><Text>An error has occurred: {error.message}</Text></View>;
   }
-  if(isrefreshing)
-  {
-    console.log('refetching newslist');
-    refetch();
-  }
+  
 
   // useEffect(()=>{
   //   NewsList

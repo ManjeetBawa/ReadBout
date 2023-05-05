@@ -1,10 +1,12 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import { Text, Pressable,View, ImageBackground, Dimensions,ActivityIndicator } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
 import { useQuery } from 'react-query';
 import axios from 'axios';
 import { BASE_URL } from '../../../../services/endpoints';
+import { getData, setData } from '../../../../utils/storage/ApplicationStorage';
+import NetInfo from "@react-native-community/netinfo";
 
 import styles from './style';
 // import data from '../data';
@@ -13,11 +15,26 @@ interface prop {
   isrefreshing: boolean,
 }
 const CarouselLoader = ({isrefreshing}: prop) => {
-
    const { isLoading, error, data ,refetch} = useQuery('LatestNews', async () => {
+    // const status = NetInfo.addEventListener((state)=>{
+    //   state.isConnected
+    // })
+    // console.log
+    // if(!status)
+    //   {
+    //     console.log('fetching offline');
+    //     return getData('LatestNews');
+    //   }
     const response = await axios.get(BASE_URL+'/top-headlines?country=in&apiKey=a2f0f00c594e483a8b69a5db16b329da');
+    
     return response.data;
   });
+  if(isrefreshing)
+  {
+    console.log('refetching carousel');
+   
+    refetch();
+  }
 
   if (isLoading) {
     return  <ActivityIndicator color={'#FF3A44'} size={'large'}/>
@@ -27,11 +44,7 @@ const CarouselLoader = ({isrefreshing}: prop) => {
     return <View><Text>An error has occurred: {error.message}</Text></View>;
   }
 
-  if(isrefreshing)
-  {
-    console.log('refetching carousel');
-    refetch();
-  }
+ 
 
   const navigation = useNavigation();
     const SLIDER_WIDTH = Dimensions.get('screen').width;

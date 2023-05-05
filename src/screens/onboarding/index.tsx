@@ -5,13 +5,22 @@ import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Icons } from '../../assets/Icons';
 import fonts from '../../assets/fonts';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation , CommonActions} from '@react-navigation/native';
 
 const SwiperComponent = () => {
   
     const navigation = useNavigation();
+    const {dispatch} = useNavigation();
     const ToDashBoard = () => {
-        navigation.navigate('DashboardNavigation');
+        // navigation.navigate('DashboardNavigation');
+        dispatch(
+          CommonActions.reset({
+            index: 1,
+            routes: [
+              {name: 'DashboardNavigation'},
+            ],
+          }),
+        );
     }
   return (
     <Swiper loop={false}>
