@@ -5,37 +5,15 @@ import styles from './style';
 import { BASE_URL } from '../../../../services/endpoints';
 import { useQuery } from 'react-query';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 interface Props {
   category: string,
   isrefreshing: boolean
 }
 const NewsList = ({category,isrefreshing}:Props) => {
-  console.log('category',category);
+  const [offdata, setOffdata] = useState();
+  // console.log('category',category);
   const navigation = useNavigation();
-  const { isLoading, error, data,refetch } = useQuery(`${category}`, async () => {
-    const response = await axios.get(BASE_URL+'/top-headlines?country=in&category='+`${category}`+'&apiKey=a2f0f00c594e483a8b69a5db16b329da');
-    return response.data;
-  });
-
-  if(isrefreshing)
-  {
-    console.log('refetching newslist');
-    refetch();
-  }
-  if (isLoading) {
-    return <View><ActivityIndicator color={'#FF3A44'} size={'large'}/></View>;
-  }
-
-  if (error) {
-    return <View><Text>An error has occurred: {error.message}</Text></View>;
-  }
-  
-
-  // useEffect(()=>{
-  //   NewsList
-  // },[category]);
-
-
   const FullNews = item => {
     // console.log('jello')
     navigation.navigate('News', {item});
@@ -60,6 +38,55 @@ const NewsList = ({category,isrefreshing}:Props) => {
       </View>
     );
   };
+
+
+
+
+  const { isLoading, error, data,refetch } = useQuery(`${category}`, async () => {
+    const response = await axios.get(BASE_URL+'/top-headlines?country=in&category='+`${category}`+'&apiKey=a2f0f00c594e483a8b69a5db16b329da');
+    console.log('storingData news list');
+    await AsyncStorage.setItem(`${category}`, JSON.stringify(response.data));
+    return response.data;
+  });
+
+  if(isrefreshing)
+  {
+    console.log('refetching newslist');
+    refetch();
+  }
+  if (isLoading) {
+    return <View><ActivityIndicator color={'#FF3A44'} size={'large'}/></View>;
+  }
+
+  if (error) {
+    AsyncStorage.getItem(`${category}`).then(Response => {
+      // console.log('resposnes ', JSON.parse(Response));
+      setOffdata(JSON.parse(Response));
+    });
+    if (offdata) {
+      return (
+        // <Text>Error occured</Text>
+        <View>
+      <FlatList renderItem={renderItem} data={offdata.articles} />
+    </View>
+      
+      )
+    }
+
+    else {
+      return (
+        null
+      )
+    }
+  }
+  
+
+  // useEffect(()=>{
+  //   NewsList
+  // },[category]);
+
+
+  
   return (
     <View>
       <FlatList renderItem={renderItem} data={data.articles} />
