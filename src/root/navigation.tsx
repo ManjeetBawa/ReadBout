@@ -11,6 +11,7 @@ import Favourite from '../screens/Favourite';
 import SearchItem from '../screens/searchPage';
 import SwiperComponent from '../screens/onboarding';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import SeeAll from '../screens/seeAll';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -104,6 +105,11 @@ const Navigation = () => {
         <Stack.Screen
           name="SearchItem"
           component={SearchItem}
+          options={{headerShown: false}}
+        />
+         <Stack.Screen
+          name="SeeAll"
+          component={SeeAll}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

@@ -3,6 +3,8 @@ import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {Icons} from '../../assets/Icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Snackbar from 'react-native-snackbar';
+import fonts from '../../assets/fonts';
 const News = params => {
   // console.log(params.route.params.item);
   const item = params.route.params.item;
@@ -15,6 +17,13 @@ const News = params => {
     const existingFavorites = await AsyncStorage.getItem('favorites');
     let favoritesArray = existingFavorites ? JSON.parse(existingFavorites) : [];
     if (!active) {
+        Snackbar.show({
+            text: 'Added to Favourite',
+            duration: Snackbar.LENGTH_SHORT,
+            textColor: '#FF3A44',
+            backgroundColor: '#fff',
+            fontFamily: fonts.BOLD,
+          });
       try {
         setActive(true);
         let newarray = [item, ...favoritesArray];
@@ -25,22 +34,29 @@ const News = params => {
         console.log('Error adding item to favorites', e);
       }
     } else {
-    //   setActive(false);
-      console.log('not implemented');
-    //   let pushmatch= matchingfinal.filter((res)=>{
-    //       res!=item.title;
-
-    //   }
-    //   )
-    //   console.log(pushmatch);
+        setActive(false);
+        Snackbar.show({
+            text: 'Removed from Favourites',
+            duration: Snackbar.LENGTH_SHORT,
+            textColor: '#FF3A44',
+            backgroundColor: '#fff',
+            fontFamily: fonts.BOLD,
+          });
+        let pushmatch= matchingfinal.filter((res)=>{
+             return item.title !==res
+        }
+        )
+        console.log('pushmatch----->',pushmatch);
       // )
-      // let pushfav = favoritesArray.filter((res)=>{
-      //     res!=item;
-
-      // }
-      // )
-      // await AsyncStorage.setItem('favorites', JSON.stringify(pushfav));
-      // await AsyncStorage.setItem('matching', JSON.stringify(pushmatch));
+      let pushfav = favoritesArray.filter((res)=>{
+        console.log('--------------------------------------',res!==item)
+        console.log('-----res----->',res);
+        console.log('----item----->', item);
+      }
+      )
+      console.log('pushfavv----->',pushfav);
+      await AsyncStorage.setItem('favorites', JSON.stringify(pushfav));
+      await AsyncStorage.setItem('matching', JSON.stringify(pushmatch));
     }
   };
   useEffect(() => {
@@ -49,7 +65,7 @@ const News = params => {
         const mydata = JSON.parse(val);
         const search = mydata.filter(value => value === item.title);
         // const search = JSON.parse(val).filter((value)=>value==item.title)
-        console.log(JSON.parse(val));
+        console.log('testing',JSON.parse(val));
         if (search.length >= 1) {
           setActive(true);
         } else {

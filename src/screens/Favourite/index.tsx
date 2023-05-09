@@ -1,11 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, FlatList, ImageBackground, Pressable} from 'react-native';
-import {useQuery} from 'react-query';
-import axios from 'axios';
-import NetInfo from '@react-native-community/netinfo';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation, useIsFocused} from '@react-navigation/native';
-import News from '../fullnews';
 import styles from './style';
 const Favourite = () => {
   // const { isLoading, error, data:everything ,refetch} = useQuery('try', async () => {
@@ -21,6 +17,7 @@ const Favourite = () => {
   // if (error) {
   //   return <View><Text>An error has occurred: {error.message}</Text></View>;
   // }
+  const navigation = useNavigation();
   const isfocused = useIsFocused();
   const [favdata, setFavdata] = useState();
   useEffect(() => {
@@ -30,19 +27,34 @@ const Favourite = () => {
     });
     console.log(isfocused);
   }, [isfocused]);
+
+  const FullNews = item => {
+    // console.log('jello')
+    navigation.navigate('News', {item});
+  };
   const renderItem = ({item}) => {
     // console.log(item)
     return (
       <View style={styles.item}>
-        <Pressable >
+        <Pressable onPress={() => FullNews(item)}>
           <ImageBackground
-            source={{uri: item.urlToImage?item.urlToImage:'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA='}}
+            source={{
+              uri: item.urlToImage
+                ? item.urlToImage
+                : 'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA=',
+            }}
             imageStyle={{width: '100%', height: 128, borderRadius: 8}}>
             <View style={styles.alltext}>
-              <Text style={styles.bottomText}>{item.title?item.title:null}</Text>
+              <Text style={styles.bottomText}>
+                {item.title ? item.title : null}
+              </Text>
               <View style={styles.authNdate}>
-                <Text style={styles.bottomText}>{item.author?item.author:null}</Text>
-                <Text style={styles.bottomText}>{item.publishedAt?item.publishedAt.slice(0,10):null}</Text>
+                <Text style={styles.bottomText}>
+                  {item.author ? item.author : null}
+                </Text>
+                <Text style={styles.bottomText}>
+                  {item.publishedAt ? item.publishedAt.slice(0, 10) : null}
+                </Text>
               </View>
             </View>
           </ImageBackground>
@@ -50,15 +62,15 @@ const Favourite = () => {
       </View>
     );
   };
-
-  NetInfo.addEventListener(networkState => {
-    console.log('Connection type - ', networkState.type);
-    console.log('Is connected? - ', networkState.isConnected);
-  });
-
+  if (favdata?.length === 0) {
+    return (
+      <View style={styles.nodataBox}>
+        <Text style={styles.NodataText}>Nothing to show</Text>
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
-      {/* {NetInfo.addEventListener()} */}
       <FlatList data={favdata} renderItem={renderItem} />
     </View>
   );

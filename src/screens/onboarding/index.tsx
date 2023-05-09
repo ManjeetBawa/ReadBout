@@ -23,14 +23,14 @@ const SwiperComponent = () => {
         );
     }
   return (
-    <Swiper loop={false}>
+    <Swiper loop={false} >
       <View style={styles.slide1}>
        <Icons.ContentFirstScreen  height = {413} width = {295}/>
       </View>
       <View style={styles.slide2}>
         <Icons.SecondScreen  height = {413} width = {295} />
         <TouchableOpacity onPress={ToDashBoard}>
-        <Text style={{fontFamily: fonts.BOLD, fontSize: 20}}>{'Next->'}</Text>
+        <Text style={{fontFamily: fonts.BOLD, fontSize: 20,color:'#000'}}>{'Next->'}</Text>
         </TouchableOpacity>
       </View>
     </Swiper>

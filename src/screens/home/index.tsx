@@ -26,6 +26,9 @@ const Home = () => {
   const getfilter = (value: string) => {
     setfilter(value);
   };
+  const SeeAllHandler = () => {
+    navigation.navigate('SeeAll');
+  }
   const handleRefresh = () => {
     setRefreshing(true);
     setTimeout(() => {
@@ -42,7 +45,7 @@ const Home = () => {
           <TextInput
             returnKeyType="search"
             value={searchval}
-            placeholder="DogeCoin to the Moon..."
+            placeholder="Search anything here ..."
             // placeholderTextColor={'#fff'}
             style={styles.searchArea}
             // autoFocus={focus}
@@ -61,7 +64,7 @@ const Home = () => {
       {/* ------------------------------See More Box---------------- */}
       <View style={styles.seeMoreBox}>
         <Text style={styles.latestNews}>{Strings.home.latest_news}</Text>
-        <TouchableOpacity style={styles.SeeMoreSection}>
+        <TouchableOpacity style={styles.SeeMoreSection} onPress={SeeAllHandler}>
           <Text style={styles.SeeMore}>{Strings.home.see_all}</Text>
           <Icons.Arrow width={20} height={20} />
         </TouchableOpacity>
