@@ -7,10 +7,10 @@ import axios from 'axios';
 const SeeAll = () => {
     const { isLoading, error, data,refetch } = useQuery('SeeAll', async () => {
         const response = await axios.get('https://newsapi.org/v2/everything&apiKey=a2f0f00c594e483a8b69a5db16b329da');
-        console.log(response.data)
+        // console.log(response.data)
         return response.data;
       });
-      console.log(data);
+    //   console.log(data);
 
     return (
         <Text>See all section</Text>

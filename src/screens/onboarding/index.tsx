@@ -23,7 +23,7 @@ const SwiperComponent = () => {
         );
     }
   return (
-    <Swiper loop={false} >
+    <Swiper loop={false} activeDotColor='#FF3A44'>
       <View style={styles.slide1}>
        <Icons.ContentFirstScreen  height = {413} width = {295}/>
       </View>

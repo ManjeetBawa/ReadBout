@@ -12,36 +12,14 @@ const styles = StyleSheet.create({
         fontSize: 20,
         color: '#FF3A44',
     },
+    container:{
+        marginTop: 15,
+    },
     item: {
-        width:'100%', 
-        height: 128,
+        width:'100%',
         paddingHorizontal: 15,
         marginBottom: 8,
+        marginVertical: 4
     },
-    // image: {
-    //     width: '100%',
-    //     height: '100%',
-    //     borderRadius: 8,
-    // },
-    alltext: {
-        // flex:1,
-        height: '100%',
-        justifyContent: 'space-between',
-        // backgroundColor: 'red',
-        paddingHorizontal: 16,
-        paddingVertical: 8,
-        
-    },
-    authNdate: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    bottomText: {
-        fontFamily: fonts.BOLD,
-        color: '#fff',
-       },
-       container:{
-        marginTop: 10,
-       }
 })
 export default styles;

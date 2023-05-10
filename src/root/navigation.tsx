@@ -73,7 +73,7 @@ const Navigation = () => {
   useEffect(() => {
     setTimeout(() => {
       setShowSplash(false);
-    }, 2000);
+    }, 2200);
   }, []);
   return (
     <NavigationContainer>

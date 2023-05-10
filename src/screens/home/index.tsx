@@ -6,7 +6,6 @@ import styles from './style';
 import {Icons} from '../../assets/Icons';
 import {Strings} from '../strings';
 import Filterbutton from './components/filterbutton';
-
 import NewsList from './components/newslists';
 const Home = () => {
   const navigation = useNavigation();
@@ -46,9 +45,7 @@ const Home = () => {
             returnKeyType="search"
             value={searchval}
             placeholder="Search anything here ..."
-            // placeholderTextColor={'#fff'}
             style={styles.searchArea}
-            // autoFocus={focus}
             onChangeText={(val)=>setSearchval(val)}
             onEndEditing={Search}
             ref={searchref}

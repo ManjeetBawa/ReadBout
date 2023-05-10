@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Text, FlatList,View, Pressable, TouchableOpacity } from 'react-native';
-import { useQuery } from 'react-query';
+import { Text, FlatList, Pressable } from 'react-native';
 
 import styles from './style';
 import data from './category';

@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   bottomTab:{
     borderRadius: 32,
     marginHorizontal: 28,
-    marginBottom: 35,
+    marginBottom: 15,
     paddingHorizontal: 25,
     position: 'absolute',
   },

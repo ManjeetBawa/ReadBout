@@ -34,7 +34,8 @@
 		91D7F878830C48558CA3A677 /* Tinos-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73B8B88F2E814148992A86AF /* Tinos-BoldItalic.ttf */; };
 		AAF9FA0A174947A39D7C3459 /* Tinos-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B13D9CFDEBF24D228D563E48 /* Tinos-Italic.ttf */; };
 		F8FF18A206814C4C8A1D2608 /* Tinos-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0889F5024C9F4A539A196A6F /* Tinos-Regular.ttf */; };
-		F658DC0F7D4D4616A0D2D76A /* index.tsx in Resources */ = {isa = PBXBuildFile; fileRef = 288EC864C2204519A3057887 /* index.tsx */; };
+		4884CA5BD4FC45659592E29E /* NewYorkSmall-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E0656D04D1154388ACB9AF48 /* NewYorkSmall-Bold.ttf */; };
+		DF087ECD4E6743EA943D7977 /* index.tsx in Resources */ = {isa = PBXBuildFile; fileRef = 284A09921618404AB843C575 /* index.tsx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +86,8 @@
 		73B8B88F2E814148992A86AF /* Tinos-BoldItalic.ttf */ = {isa = PBXFileReference; name = "Tinos-BoldItalic.ttf"; path = "../src/assets/fonts/Tinos-BoldItalic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		B13D9CFDEBF24D228D563E48 /* Tinos-Italic.ttf */ = {isa = PBXFileReference; name = "Tinos-Italic.ttf"; path = "../src/assets/fonts/Tinos-Italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		0889F5024C9F4A539A196A6F /* Tinos-Regular.ttf */ = {isa = PBXFileReference; name = "Tinos-Regular.ttf"; path = "../src/assets/fonts/Tinos-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		288EC864C2204519A3057887 /* index.tsx */ = {isa = PBXFileReference; name = "index.tsx"; path = "../src/assets/fonts/index.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E0656D04D1154388ACB9AF48 /* NewYorkSmall-Bold.ttf */ = {isa = PBXFileReference; name = "NewYorkSmall-Bold.ttf"; path = "../src/assets/fonts/NewYorkSmall-Bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		284A09921618404AB843C575 /* index.tsx */ = {isa = PBXFileReference; name = "index.tsx"; path = "../src/assets/fonts/index.tsx"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,7 +216,8 @@
 				73B8B88F2E814148992A86AF /* Tinos-BoldItalic.ttf */,
 				B13D9CFDEBF24D228D563E48 /* Tinos-Italic.ttf */,
 				0889F5024C9F4A539A196A6F /* Tinos-Regular.ttf */,
-				288EC864C2204519A3057887 /* index.tsx */,
+				E0656D04D1154388ACB9AF48 /* NewYorkSmall-Bold.ttf */,
+				284A09921618404AB843C575 /* index.tsx */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -336,7 +339,8 @@
 				91D7F878830C48558CA3A677 /* Tinos-BoldItalic.ttf in Resources */,
 				AAF9FA0A174947A39D7C3459 /* Tinos-Italic.ttf in Resources */,
 				F8FF18A206814C4C8A1D2608 /* Tinos-Regular.ttf in Resources */,
-				F658DC0F7D4D4616A0D2D76A /* index.tsx in Resources */,
+				4884CA5BD4FC45659592E29E /* NewYorkSmall-Bold.ttf in Resources */,
+				DF087ECD4E6743EA943D7977 /* index.tsx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

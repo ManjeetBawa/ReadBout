@@ -3,7 +3,11 @@
   "data": [
     {
       "path": "src/assets/fonts/index.tsx",
-      "sha1": "6a72023e72a22d72b427a279a963b07906596eb3"
+      "sha1": "06942fabd2e98157d7ebf7e0da65519c7a1dd0bb"
+    },
+    {
+      "path": "src/assets/fonts/NewYorkSmall-Bold.ttf",
+      "sha1": "d38cd8dfae7e9bdc972629302910e69ee978cab6"
     },
     {
       "path": "src/assets/fonts/Nunito-Black.ttf",

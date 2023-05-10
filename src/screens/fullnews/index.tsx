@@ -6,12 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar';
 import fonts from '../../assets/fonts';
 const News = params => {
-  // console.log(params.route.params.item);
   const item = params.route.params.item;
 
   const [active, setActive] = useState<boolean>(false);
   const FavClicked = async () => {
-    // active?setActive(false):setActive(true);
     const existingmatching = await AsyncStorage.getItem('matching');
     let matchingfinal = existingmatching ? JSON.parse(existingmatching) : [];
     const existingFavorites = await AsyncStorage.getItem('favorites');
@@ -46,15 +44,10 @@ const News = params => {
              return item.title !==res
         }
         )
-        console.log('pushmatch----->',pushmatch);
-      // )
       let pushfav = favoritesArray.filter((res)=>{
-        console.log('--------------------------------------',res!==item)
-        console.log('-----res----->',res);
-        console.log('----item----->', item);
+        return item.title !== res.title;
       }
       )
-      console.log('pushfavv----->',pushfav);
       await AsyncStorage.setItem('favorites', JSON.stringify(pushfav));
       await AsyncStorage.setItem('matching', JSON.stringify(pushmatch));
     }
@@ -64,8 +57,6 @@ const News = params => {
       if (val) {
         const mydata = JSON.parse(val);
         const search = mydata.filter(value => value === item.title);
-        // const search = JSON.parse(val).filter((value)=>value==item.title)
-        console.log('testing',JSON.parse(val));
         if (search.length >= 1) {
           setActive(true);
         } else {
