@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import fonts from '../../assets/fonts';
 const styles = StyleSheet.create({
     slide1: {
         flex: 1,
@@ -12,10 +13,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#fff'
       },
-      text: {
-        color: '#fff',
-        fontSize: 30,
-        fontWeight: 'bold'
+      bttn:{
+        backgroundColor: '#FF3A44',
+        borderRadius:100,
+        // padding: 10,
+        paddingBottom: 15,
+        paddingHorizontal: 14,
+      },
+      nextBtn:{
+        fontFamily: fonts.BOLD, 
+        fontSize: 40,
+        color:'#fff'
       }
 });
 export default styles;

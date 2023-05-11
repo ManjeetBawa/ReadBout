@@ -33,7 +33,7 @@ const CarouselLoader = ({isrefreshing}: prop) => {
     );
   };
 
-  const {isLoading, error, data, refetch} = useQuery('LatestNews', async () => {
+  const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
       BASE_URL +
         '/top-headlines?country=in&apiKey=ba98ff1447a14572bdf276236083a22c',

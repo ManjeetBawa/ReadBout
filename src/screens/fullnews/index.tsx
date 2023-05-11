@@ -5,6 +5,7 @@ import {Icons} from '../../assets/Icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar';
 import fonts from '../../assets/fonts';
+import { format } from 'date-fns';
 const News = params => {
   const item = params.route.params.item;
 
@@ -65,7 +66,9 @@ const News = params => {
       }
     });
   }, []);
+  const date = new Date(`${item.publishedAt.slice(0, 10)}`);
   return (
+    
     <View style={styles.container}>
       <Image
         source={{
@@ -78,7 +81,15 @@ const News = params => {
       <ScrollView style={styles.textBox}>
         <Text style={styles.text}>{item.title}</Text>
         <Text style={styles.disc}>{item.description}</Text>
-        <Text style={styles.disc}>{item.author}</Text>
+        <Text style={styles.disc}>{item.content}</Text>
+        <View style={styles.authNdate}>
+            <Text style={styles.DateText}>
+              {item.author ? item.author : null}
+            </Text>
+            <Text style={styles.DateText}>
+              {item.publishedAt ? format(date, 'EEEE, do MMMM yyyy') : null}
+            </Text>
+          </View>
       </ScrollView>
       <TouchableOpacity style={styles.FavIcon} onPress={FavClicked}>
         {active ? (

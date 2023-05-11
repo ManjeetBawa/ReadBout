@@ -7,10 +7,7 @@ const styles = StyleSheet.create({
     },
     bottomText: {
         fontFamily: fonts.NEW_YORK_SMALL_BOLD,
-        // color: '#fff',
-        
         fontSize: 15,
-
         color: '#000',
         paddingVertical: 10,
        },

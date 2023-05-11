@@ -107,7 +107,7 @@ const Navigation = () => {
           component={SearchItem}
           options={{headerShown: false}}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="SeeAll"
           component={SeeAll}
           options={{headerShown: false}}
