@@ -6,7 +6,10 @@ import HomeInactive from './HomeInactive.svg';
 import FavActive from './FavActive.svg';
 import FavInactive from './FavInactive.svg';
 import ContentFirstScreen from './ContentFirstScreen.svg';
-import SecondScreen from './SecondScreen.svg'
+import SecondScreen from './SecondScreen.svg';
+import goBack from './goBack.svg';
+import Offline from './Offline.svg';
+import GoBackOffline from './GoBackOffilne.svg';
 // import Fav
 export const Icons = {
   Bell,
@@ -17,5 +20,8 @@ export const Icons = {
   FavActive,
   FavInactive,
   ContentFirstScreen,
-  SecondScreen
+  SecondScreen,
+  goBack,
+  Offline,
+  GoBackOffline,
 };

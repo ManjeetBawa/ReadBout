@@ -7,7 +7,36 @@ import {Icons} from '../../assets/Icons';
 import {Strings} from '../strings';
 import Filterbutton from './components/filterbutton';
 import NewsList from './components/newslists';
+import PushNotification from "react-native-push-notification";
+
 const Home = () => {
+  // PushNotification.createChannel(
+  //   {
+  //     channelId: "channel-id", // (required)
+  //     channelName: "My channel", // (required)
+  //   },
+  //   (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
+  // );
+  
+
+const testpush = () => {
+  console.log('bell pressed');
+  PushNotification.localNotification({
+    channelId: "abcd",
+    title: "My Notification Title", // (optional)
+    message: "My Notification Message", // (required)
+    
+  });
+}
+const testschepush = () => {
+  PushNotification.localNotificationSchedule({
+    //... You can use all the options from localNotifications
+    message: "My Notification Message", // (required)
+    date: new Date(Date.now() + 10 * 1000), // in 10 secs
+   
+  });
+}
+
   const navigation = useNavigation();
   const [refreshing,setRefreshing] = useState<boolean>(false);
   const [filter, setfilter] = useState<string>('business');
@@ -54,7 +83,7 @@ const Home = () => {
             <Icons.VectorSearch width={16} height={14} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.BelliIcon}>
+        <TouchableOpacity style={styles.BelliIcon} onPress={testpush}>
           <Icons.Bell width={40} height={36} />
         </TouchableOpacity>
       </View>

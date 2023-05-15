@@ -6,10 +6,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar';
 import fonts from '../../assets/fonts';
 import { format } from 'date-fns';
+import { useNavigation } from '@react-navigation/native';
 const News = params => {
   const item = params.route.params.item;
-
+  const {goBack} = useNavigation();
   const [active, setActive] = useState<boolean>(false);
+  const gobackhandler = () => {
+    goBack();
+  }
   const FavClicked = async () => {
     const existingmatching = await AsyncStorage.getItem('matching');
     let matchingfinal = existingmatching ? JSON.parse(existingmatching) : [];
@@ -91,6 +95,9 @@ const News = params => {
             </Text>
           </View>
       </ScrollView>
+      <TouchableOpacity  onPress={gobackhandler} style={{top: 10, left: 10, position: 'absolute'}}>
+      <Icons.goBack height={45} width={45} />
+        </TouchableOpacity>
       <TouchableOpacity style={styles.FavIcon} onPress={FavClicked}>
         {active ? (
           <Icons.FavActive height={40} width={40} />

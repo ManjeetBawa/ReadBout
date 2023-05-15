@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
   flatlistBox: {
     paddingHorizontal: 15,
     marginTop: 16,
+  },
+  goback: {
+    position:'absolute' ,
+     bottom: '15%'
   }
 });
 export default styles;

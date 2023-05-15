@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, FlatList, Pressable} from 'react-native';
+import {View, Text, FlatList, Pressable, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation, useIsFocused} from '@react-navigation/native';
 import styles from './style';
@@ -20,6 +20,7 @@ const Favourite = () => {
   const FullNews = item => {
     navigation.navigate('News', {item});
   };
+  
   const renderItem = ({item}) => {
     const date = new Date(`${item.publishedAt.slice(0,10)}`);
     return (
@@ -40,6 +41,7 @@ const Favourite = () => {
   return (
     <View style={styles.container}>
       <FlatList data={favdata} renderItem={renderItem} ItemSeparatorComponent={itemdivider} />
+      
     </View>
   );
 };
