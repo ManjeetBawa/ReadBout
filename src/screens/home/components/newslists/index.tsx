@@ -53,9 +53,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
   }
   if (isLoading) {
     return (
-      <View>
         <ActivityIndicator color={'#FF3A44'} size={'large'} />
-      </View>
     );
   }
   if (error) {

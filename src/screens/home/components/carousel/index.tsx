@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import {Pressable, View, Dimensions, ActivityIndicator} from 'react-native';
+import {
+  Pressable,
+  View,
+  Dimensions,
+  ActivityIndicator,
+  Text,
+} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
 import {useQuery} from 'react-query';
@@ -8,6 +14,7 @@ import {BASE_URL} from '../../../../services/endpoints';
 import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AllNewsList from '../../../commonComponents/allNewsList';
+import SkeletonContent from 'react-native-skeleton-content';
 
 interface prop {
   isrefreshing: boolean;
@@ -47,7 +54,11 @@ const CarouselLoader = ({isrefreshing}: prop) => {
   }
 
   if (isLoading) {
-    return <ActivityIndicator color={'#FF3A44'} size={'large'} />;
+    return(
+    <View> 
+      <ActivityIndicator color={'#FF3A44'} size={'large'} />
+    </View>
+    )
   }
 
   if (error) {

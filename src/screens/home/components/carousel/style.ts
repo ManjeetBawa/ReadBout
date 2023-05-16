@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     height: 250,
     width: ITEM_WIDTH,
     borderRadius: 8,
-   }
+   },
+
 })
 export default styles;

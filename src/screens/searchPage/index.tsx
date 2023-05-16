@@ -77,11 +77,6 @@ const SearchItem = prop => {
       </View>
     );
   };
-
-
-
-
-
   return (
     <View style={styles.flatlistBox}>
       <FlatList renderItem={renderitem} data={data.articles} ItemSeparatorComponent={Itemdivider} />

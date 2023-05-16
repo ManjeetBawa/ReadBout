@@ -54,6 +54,8 @@ PushNotification.configure({
    */
   requestPermissions: true,
 })
+
+ 
 const queryClient = new QueryClient();
 const App = () => {
   return (

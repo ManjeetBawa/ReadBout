@@ -1,54 +1,93 @@
-import React, {Component, useEffect, useState, useRef} from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import {Text, View, TouchableOpacity, TextInput,RefreshControl,ScrollView} from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, RefreshControl, ScrollView,Platform } from 'react-native';
 import CarouselLoader from './components/carousel';
 import styles from './style';
-import {Icons} from '../../assets/Icons';
-import {Strings} from '../strings';
+import { Icons } from '../../assets/Icons';
+import { Strings } from '../strings';
 import Filterbutton from './components/filterbutton';
 import NewsList from './components/newslists';
 import PushNotification from "react-native-push-notification";
-
+import PushNotificationIOS from "@react-native-community/push-notification-ios";
 const Home = () => {
+  const requestPermissions = () => {
+    if (Platform.OS == 'ios') {
+      PushNotificationIOS.requestPermissions({
+        alert: true,
+        badge: true,
+        sound: true,
+        critical: true,
+      }).then(
+        (data) => {
+          console.log('PushNotificationIOS.requestPermissions', data);
+        },
+        (data) => {
+          console.log('PushNotificationIOS.requestPermissions failed', data);
+        },
+      );
+    }
+    return PushNotification.requestPermissions()
+  }
+
+  const createNotificationChannel = () => {
+    PushNotification.createChannel({
+      channelId: 'buddy',
+      channelName: 'Buddy',
+      channelDescription: 'Buddy',
+      soundName: 'default',
+      vibrate: true,
+    },
+      (created) => console.log(`createChannel 'buddy' returned ‘${created}’`) // (optional) callback returns whether the channel was created, false means it already existed.
+    );
+    requestPermissions()
+  }
+  useEffect(()=>{
+    createNotificationChannel();
+  },[])
   // PushNotification.createChannel(
   //   {
   //     channelId: "channel-id", // (required)
   //     channelName: "My channel", // (required)
+  //     channelDescription: "A channel to categorise your notifications", // (optional) default: undefined.
+  //     playSound: false, // (optional) default: true
+  //     soundName: "default", // (optional) See `soundName` parameter of `localNotification` function
+  //     // importance: Importance.HIGH, // (optional) default: Importance.HIGH. Int value of the Android notification importance
+  //     vibrate: true, // (optional) default: true. Creates the default vibration pattern if true.
   //   },
   //   (created) => console.log(`createChannel returned '${created}'`) // (optional) callback returns whether the channel was created, false means it already existed.
   // );
-  
 
-const testpush = () => {
-  console.log('bell pressed');
-  PushNotification.localNotification({
-    channelId: "abcd",
-    title: "My Notification Title", // (optional)
-    message: "My Notification Message", // (required)
-    
-  });
-}
-const testschepush = () => {
-  PushNotification.localNotificationSchedule({
-    //... You can use all the options from localNotifications
-    message: "My Notification Message", // (required)
-    date: new Date(Date.now() + 10 * 1000), // in 10 secs
-   
-  });
-}
+  const testpush = () => {
+    console.log('bell pressed');
+    PushNotification.localNotification({
+      channelId: "channel-id",
+      title: "My Notification Title", // (optional)
+      message: "My Notification Message", // (required)
+
+    });
+  }
+  const testschepush = () => {
+    PushNotification.localNotificationSchedule({
+      channelId: "buddy",
+      //... You can use all the options from localNotifications
+      message: "My Notification Message", // (required)
+      date: new Date(Date.now() + 10 * 1000), // in 10 secs
+
+    });
+  }
 
   const navigation = useNavigation();
-  const [refreshing,setRefreshing] = useState<boolean>(false);
+  const [refreshing, setRefreshing] = useState<boolean>(false);
   const [filter, setfilter] = useState<string>('business');
-  const [searchval,setSearchval] = useState('');
+  const [searchval, setSearchval] = useState('');
   const searchref = useRef();
   const searchIconHandler = () => {
     searchref.current.focus();
   };
   const Search = () => {
     console.log('Search Clicked');
-    if(!(searchval.trim()==='')){
-      navigation.navigate('SearchItem',{searchval});
+    if (!(searchval.trim() === '')) {
+      navigation.navigate('SearchItem', { searchval });
     }
   };
   const getfilter = (value: string) => {
@@ -75,7 +114,7 @@ const testschepush = () => {
             value={searchval}
             placeholder="Search anything here ..."
             style={styles.searchArea}
-            onChangeText={(val)=>setSearchval(val)}
+            onChangeText={(val) => setSearchval(val)}
             onEndEditing={Search}
             ref={searchref}
           />
@@ -97,18 +136,18 @@ const testschepush = () => {
       </View>
       {/* -----------------------------------------Carousel--------------------------------- */}
       <ScrollView refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={handleRefresh}/>
+        <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
       }>
         <View>
-        <View style={styles.Carousel}>
-          <CarouselLoader isrefreshing = {refreshing}/>
-        </View>
-        <View style={styles.filterItems}>
-          <Filterbutton getfilter={val => getfilter(val)} />
-        </View>
-        <View>
-          <NewsList category = {filter} isrefreshing = {refreshing}/>
-        </View>
+          <View style={styles.Carousel}>
+            <CarouselLoader isrefreshing={refreshing} />
+          </View>
+          <View style={styles.filterItems}>
+            <Filterbutton getfilter={val => getfilter(val)} />
+          </View>
+          <View>
+            <NewsList category={filter} isrefreshing={refreshing} />
+          </View>
         </View>
       </ScrollView>
     </View>
