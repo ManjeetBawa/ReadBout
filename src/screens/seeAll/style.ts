@@ -1,8 +1,10 @@
 import {StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
-  container :{
-
-  }
+  item: {
+    width:'100%', 
+    paddingHorizontal: 15,
+    marginVertical: 8,
+}
 })
 
 export default styles;
