@@ -1,6 +1,12 @@
 import {StyleSheet} from 'react-native';
 import fonts from '../../../assets/fonts';
 const styles = StyleSheet.create({
+    image: {
+        height: 170, 
+        width: '100%', 
+        borderRadius: 8, 
+        resizeMode: 'contain',
+    },
     authNdate: {
         flexDirection: 'row',
         justifyContent: 'space-between',

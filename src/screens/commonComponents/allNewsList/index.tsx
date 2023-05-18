@@ -12,7 +12,7 @@ const AllNewsList = ({item,date,DateAndAuth}:AllNewsList) => {
     return (
     <View>
         <Image
-            style={{height: 170, width: '100%', borderRadius: 8}}
+            style={{height: 170, width: '100%', borderRadius: 8, resizeMode: 'cover'}}
             source={{
               uri: item.urlToImage
                 ? item.urlToImage

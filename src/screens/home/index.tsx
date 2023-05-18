@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, TouchableOpacity, TextInput, RefreshControl, ScrollView,Platform } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, RefreshControl, ScrollView,Platform, Keyboard } from 'react-native';
 import CarouselLoader from './components/carousel';
 import styles from './style';
 import { Icons } from '../../assets/Icons';
-import { Strings } from '../strings';
+import { Strings } from '../../strings';
 import Filterbutton from './components/filterbutton';
 import NewsList from './components/newslists';
 import PushNotification from "react-native-push-notification";
@@ -54,23 +54,21 @@ const Home = () => {
 
     });
   }
-  const testschepush = () => {
-    PushNotification.localNotificationSchedule({
-      channelId: "buddy",
-      //... You can use all the options from localNotifications
-      message: "My Notification Message", // (required)
-      date: new Date(Date.now() + 10 * 1000), // in 10 secs
-
-    });
-  }
-
   const navigation = useNavigation();
   const [refreshing, setRefreshing] = useState<boolean>(false);
   const [filter, setfilter] = useState<string>('business');
   const [searchval, setSearchval] = useState('');
   const searchref = useRef();
+  ///have to apply this functionality again
   const searchIconHandler = () => {
-    searchref.current.focus();
+    console.log(Keyboard.isVisible())
+    if(Keyboard.isVisible()){
+      Search();
+    }
+    else{
+      searchref.current.focus();
+    }
+    
   };
   const Search = () => {
     console.log('Search Clicked');
@@ -91,7 +89,6 @@ const Home = () => {
       console.log(refreshing);
     }, 1500);
   }
-
   return (
     <View style={styles.container}>
       {/* ------------------Header------------ */}

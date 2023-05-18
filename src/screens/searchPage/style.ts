@@ -13,6 +13,15 @@ const styles = StyleSheet.create({
   goback: {
     position:'absolute' ,
      bottom: '15%'
+  },
+  Lottie:{
+    height: '50%',
+    width: '50%'
+  },
+  NointernetText:{
+    fontFamily: fonts.BLACK,
+    fontSize: 24,
+    color: '#FF3A44'
   }
 });
 export default styles;

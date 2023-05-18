@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, FlatList, Pressable } from 'react-native';
-
+import { Text, FlatList, Pressable,Alert } from 'react-native';
+import BottomSheet from 'react-native-bottomsheet';
 import styles from './style';
 import data from './category';
 interface filterProps{
