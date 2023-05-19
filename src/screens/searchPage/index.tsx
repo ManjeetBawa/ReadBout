@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -14,16 +14,9 @@ import styles from './style';
 import {BASE_URL} from '../../services/endpoints';
 import AllNewsList from '../../components/allNewsList';
 import Itemdivider from '../../components/itemDivider';
-import NetInfo from '@react-native-community/netinfo';
-import {Icons} from '../../assets/Icons';
 import LottieView from 'lottie-react-native';
+import fonts from '../../assets/fonts';
 const SearchItem = prop => {
-  const [netstatus, setNetStatus] = useState(true);
-  NetInfo.fetch().then(networkState => {
-    // console.log("Connection type - ", networkState.type);
-    console.log('Is connected? - ', networkState.isConnected);
-    setNetStatus(networkState.isConnected);
-  });
   const navigation = useNavigation();
   const {goBack} = useNavigation();
   const searchitem = prop.route.params.searchval;
@@ -62,7 +55,7 @@ const SearchItem = prop => {
       />
         </View>
         <TouchableOpacity onPress={goBack}>
-        <Text style={{color:'#0080FF',fontSize: 24}}>Go back</Text>
+        <Text style={{color:'#0080FF',fontSize: 24, fontFamily: fonts.BOLD}}>Go back</Text>
         </TouchableOpacity>
         </View>
       );
