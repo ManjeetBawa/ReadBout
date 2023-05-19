@@ -6,7 +6,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar';
 import fonts from '../../assets/fonts';
 import { format } from 'date-fns';
+import { Strings } from '../../constants/strings';
 import { useNavigation } from '@react-navigation/native';
+import { defaultImage } from '../../constants/strings';
+import { dateFormat } from '../../constants/strings';
 const News = params => {
   const item = params.route.params.item;
   const {goBack} = useNavigation();
@@ -21,7 +24,7 @@ const News = params => {
     let favoritesArray = existingFavorites ? JSON.parse(existingFavorites) : [];
     if (!active) {
         Snackbar.show({
-            text: 'Added to Favourite',
+            text: Strings.snackbar.Added,
             duration: Snackbar.LENGTH_SHORT,
             textColor: '#FF3A44',
             backgroundColor: '#fff',
@@ -39,7 +42,7 @@ const News = params => {
     } else {
         setActive(false);
         Snackbar.show({
-            text: 'Removed from Favourites',
+            text: Strings.snackbar.Removed,
             duration: Snackbar.LENGTH_SHORT,
             textColor: '#FF3A44',
             backgroundColor: '#fff',
@@ -78,7 +81,7 @@ const News = params => {
         source={{
           uri: item.urlToImage
             ? item.urlToImage
-            : 'https://media.istockphoto.com/id/1390033645/photo/world-news-background-which-can-be-used-for-broadcast-news.jpg?b=1&s=170667a&w=0&k=20&c=glqFWZtWU4Zqyxd8CRu5_Or81zqwe7cyhturXaIFEOA=',
+            : defaultImage,
         }}
         style={styles.image}
       />
@@ -91,11 +94,11 @@ const News = params => {
               {item.author ? item.author : null}
             </Text>
             <Text style={styles.DateText}>
-              {item.publishedAt ? format(date, 'EEEE, do MMMM yyyy') : null}
+              {item.publishedAt ? format(date, dateFormat) : null}
             </Text>
           </View>
       </ScrollView>
-      <TouchableOpacity  onPress={gobackhandler} style={{top: 10, left: 10, position: 'absolute'}}>
+      <TouchableOpacity  onPress={gobackhandler} style={styles.gobackIcon}>
       <Icons.goBack height={45} width={45} />
         </TouchableOpacity>
       <TouchableOpacity style={styles.FavIcon} onPress={FavClicked}>

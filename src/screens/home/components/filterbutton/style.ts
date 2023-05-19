@@ -1,10 +1,10 @@
 import { StyleSheet } from "react-native"
 import fonts from "../../../../assets/fonts";
-
+import palette from "../../../../assets/colors";
 const styles = StyleSheet.create({
     item: {
         fontSize: 15,
-        color: '#000',
+        color: palette.black,
         fontFamily: fonts.REGULAR,
         paddingHorizontal: 16,
         paddingVertical: 8,

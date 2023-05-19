@@ -4,13 +4,13 @@ import {
   View,
   Dimensions,
   ActivityIndicator,
-  Text,
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import {BASE_URL} from '../../../../services/endpoints';
+import { API_KEY } from '../../../../services/endpoints';
 import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AllNewsList from '../../../../components/allNewsList';
@@ -38,11 +38,10 @@ const CarouselLoader = ({isrefreshing}: prop) => {
       </View>
     );
   };
-
   const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
       BASE_URL +
-        '/top-headlines?country=in&apiKey=ba98ff1447a14572bdf276236083a22c',
+        '/top-headlines?country=in&'+API_KEY,
     );
     console.log('storingData');
     await AsyncStorage.setItem('LatestNews', JSON.stringify(response.data));

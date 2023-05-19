@@ -7,11 +7,12 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
-import {BASE_URL} from '../../../../services/endpoints';
+import {API_KEY, BASE_URL} from '../../../../services/endpoints';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AllNewsList from '../../../../components/allNewsList';
+import palette from '../../../../assets/colors';
 import Itemdivider from '../../../../components/itemDivider';
 interface Props {
   category: string;
@@ -42,7 +43,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
         BASE_URL +
           '/top-headlines?country=in&category=' +
           `${category}` +
-          '&apiKey=ba98ff1447a14572bdf276236083a22c',
+          '&'+API_KEY,
       );
       await AsyncStorage.setItem(`${category}`, JSON.stringify(response.data));
       return response.data;
@@ -53,7 +54,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
   }
   if (isLoading) {
     return (
-        <ActivityIndicator color={'#FF3A44'} size={'large'} />
+        <ActivityIndicator color={palette.Primary} size={'large'} />
     );
   }
   if (error) {

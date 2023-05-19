@@ -28,7 +28,6 @@ const Home = () => {
     }
     return PushNotification.requestPermissions()
   }
-
   const createNotificationChannel = () => {
     PushNotification.createChannel({
       channelId: 'buddy',
@@ -37,7 +36,7 @@ const Home = () => {
       soundName: 'default',
       vibrate: true,
     },
-      (created) => console.log(`createChannel 'buddy' returned ‘${created}’`) // (optional) callback returns whether the channel was created, false means it already existed.
+      (created) => console.log(`createChannel 'buddy' returned ‘${created}’`) 
     );
     requestPermissions()
   }
@@ -46,11 +45,10 @@ const Home = () => {
   },[])
 
   const testpush = () => {
-    console.log('bell pressed');
     PushNotification.localNotification({
       channelId: "buddy",
-      title: "Bell Pressed", // (optional)
-      message: "Notification", // (required)
+      title: "Bell Pressed", 
+      message: "Notification",
 
     });
   }
@@ -59,7 +57,6 @@ const Home = () => {
   const [filter, setfilter] = useState<string>('business');
   const [searchval, setSearchval] = useState('');
   const searchref = useRef();
-  ///have to apply this functionality again
   const searchIconHandler = () => {
     console.log(Keyboard.isVisible())
     if(Keyboard.isVisible()){

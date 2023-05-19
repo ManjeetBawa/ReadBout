@@ -10,7 +10,7 @@ import styles from './style';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import AllNewsList from '../../components/allNewsList';
-import {BASE_URL} from '../../services/endpoints';
+import {API_KEY, BASE_URL} from '../../services/endpoints';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Itemdivider from '../../components/itemDivider';
 import {useNavigation} from '@react-navigation/native';
@@ -29,10 +29,8 @@ const SeeAll = () => {
   const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
       BASE_URL +
-        '/top-headlines?country=in&apiKey=ba98ff1447a14572bdf276236083a22c',
+        '/top-headlines?country=in&'+ API_KEY,
     );
-    // console.log('storingData');
-    // await AsyncStorage.setItem('LatestNews', JSON.stringify(response.data));
     return response.data;
   });
 

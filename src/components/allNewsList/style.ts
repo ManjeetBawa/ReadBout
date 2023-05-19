@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
         height: 170, 
         width: '100%', 
         borderRadius: 8, 
-        resizeMode: 'contain',
+        resizeMode: 'cover',
     },
     authNdate: {
         flexDirection: 'row',

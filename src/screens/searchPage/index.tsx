@@ -16,6 +16,7 @@ import AllNewsList from '../../components/allNewsList';
 import Itemdivider from '../../components/itemDivider';
 import LottieView from 'lottie-react-native';
 import fonts from '../../assets/fonts';
+import { Icons } from '../../assets/Icons';
 const SearchItem = prop => {
   const navigation = useNavigation();
   const {goBack} = useNavigation();
@@ -67,6 +68,7 @@ const SearchItem = prop => {
     );
   }
 
+
   const To_fullnews = item => {
     navigation.navigate('News', {item});
   };
@@ -87,6 +89,11 @@ const SearchItem = prop => {
         data={data.articles}
         ItemSeparatorComponent={Itemdivider}
       />
+       <TouchableOpacity
+        onPress={goBack}
+        style={{top: 10, left: 10, position: 'absolute'}}>
+        <Icons.goBack height={45} width={45} />
+      </TouchableOpacity>
     </View>
   );
 };

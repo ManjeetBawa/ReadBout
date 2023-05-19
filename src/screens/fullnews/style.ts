@@ -2,6 +2,11 @@ import {StyleSheet} from 'react-native';
 import fonts from '../../assets/fonts';
 import palette from '../../assets/colors';
 const styles = StyleSheet.create({
+  gobackIcon : {
+    top: 10, 
+    left: 10, 
+    position: 'absolute',
+  },
   container: {
     flex: 1,
   },

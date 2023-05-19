@@ -12,6 +12,7 @@ import SearchItem from '../screens/searchPage';
 import SwiperComponent from '../screens/onboarding';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import SeeAll from '../screens/seeAll';
+import palette from '../assets/colors';
 
 const BottomTabs = createBottomTabNavigator();
 
@@ -20,7 +21,6 @@ const Navigation = () => {
   useEffect(() => {
     AsyncStorage.getItem('onboardKey').then(value => {
       if (value) {
-        console.log('onboard set to false');
         setOnboard(false);
       } else {
         AsyncStorage.setItem('onboardKey', 'abc');
@@ -39,7 +39,7 @@ const Navigation = () => {
           headerShown: false,
           tabBarStyle: styles.bottomTab,
           tabBarLabelStyle: styles.tabBarLabelStyle,
-          tabBarActiveTintColor: '#FF3A44',
+          tabBarActiveTintColor: palette.Primary,
         }}>
         <BottomTabs.Screen
           component={Home}
