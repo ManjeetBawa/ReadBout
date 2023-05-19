@@ -14,6 +14,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import AllNewsList from '../../../../components/allNewsList';
 import palette from '../../../../assets/colors';
 import Itemdivider from '../../../../components/itemDivider';
+import { TOP_HEADLINES } from '../../../../services/endpoints';
+import { Countries } from '../../../../services/endpoints';
 interface Props {
   category: string;
   isrefreshing: boolean;
@@ -41,7 +43,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
     async () => {
       const response = await axios.get(
         BASE_URL +
-          '/top-headlines?country=in&category=' +
+          TOP_HEADLINES+'?country='+Countries.India+'&category=' +
           `${category}` +
           '&'+API_KEY,
       );

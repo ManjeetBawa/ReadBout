@@ -4,6 +4,7 @@ import Swiper from 'react-native-swiper';
 import styles from './style';
 import {Icons} from '../../assets/Icons';
 import {useNavigation, CommonActions} from '@react-navigation/native';
+import palette from '../../assets/colors';
 
 const SwiperComponent = () => {
   const navigation = useNavigation();
@@ -17,7 +18,7 @@ const SwiperComponent = () => {
     );
   };
   return (
-    <Swiper loop={false} activeDotColor="#FF3A44">
+    <Swiper loop={false} activeDotColor={palette.Primary}>
       <View style={styles.slide1}>
         <Icons.ContentFirstScreen height={413} width={295} />
       </View>

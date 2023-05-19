@@ -15,6 +15,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Itemdivider from '../../components/itemDivider';
 import {useNavigation} from '@react-navigation/native';
 import {Icons} from '../../assets/Icons';
+import { TOP_HEADLINES } from '../../services/endpoints';
+import { Countries } from '../../services/endpoints';
+import palette from '../../assets/colors';
 const SeeAll = () => {
   const [offdata, setOffdata] = useState();
   const navigation = useNavigation();
@@ -26,18 +29,18 @@ const SeeAll = () => {
     goBack();
   };
 
-  const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
+  const {error, data, refetch, isLoading} = useQuery('LatestNewsagain', async () => {
     const response = await axios.get(
       BASE_URL +
-        '/top-headlines?country=in&'+ API_KEY,
+      TOP_HEADLINES+'?country='+Countries.India+'&'+API_KEY,
     );
     return response.data;
   });
 
   if (isLoading) {
     return (
-      <View>
-        <ActivityIndicator color={'#FF3A44'} size={'large'} />
+      <View style={styles.itemIndicator}>
+        <ActivityIndicator color={palette.Primary} size={'large'} />
       </View>
     );
   }

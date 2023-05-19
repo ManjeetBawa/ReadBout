@@ -10,6 +10,7 @@ import { Strings } from '../../constants/strings';
 import { useNavigation } from '@react-navigation/native';
 import { defaultImage } from '../../constants/strings';
 import { dateFormat } from '../../constants/strings';
+import palette from '../../assets/colors';
 const News = params => {
   const item = params.route.params.item;
   const {goBack} = useNavigation();
@@ -26,8 +27,8 @@ const News = params => {
         Snackbar.show({
             text: Strings.snackbar.Added,
             duration: Snackbar.LENGTH_SHORT,
-            textColor: '#FF3A44',
-            backgroundColor: '#fff',
+            textColor: palette.black,
+            backgroundColor: palette.white,
             fontFamily: fonts.BOLD,
           });
       try {
@@ -41,13 +42,6 @@ const News = params => {
       }
     } else {
         setActive(false);
-        Snackbar.show({
-            text: Strings.snackbar.Removed,
-            duration: Snackbar.LENGTH_SHORT,
-            textColor: '#FF3A44',
-            backgroundColor: '#fff',
-            fontFamily: fonts.BOLD,
-          });
         let pushmatch= matchingfinal.filter((res)=>{
              return item.title !==res
         }
@@ -87,8 +81,6 @@ const News = params => {
       />
       <ScrollView style={styles.textBox}>
         <Text style={styles.text}>{item.title}</Text>
-        <Text style={styles.disc}>{item.description}</Text>
-        <Text style={styles.disc}>{item.content}</Text>
         <View style={styles.authNdate}>
             <Text style={styles.DateText}>
               {item.author ? item.author : null}
@@ -97,6 +89,9 @@ const News = params => {
               {item.publishedAt ? format(date, dateFormat) : null}
             </Text>
           </View>
+        <Text style={styles.disc}>{item.description}</Text>
+        <Text style={styles.disc}>{item.content}</Text>
+        
       </ScrollView>
       <TouchableOpacity  onPress={gobackhandler} style={styles.gobackIcon}>
       <Icons.goBack height={45} width={45} />

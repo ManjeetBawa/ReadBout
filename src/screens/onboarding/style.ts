@@ -1,20 +1,21 @@
 import {StyleSheet} from 'react-native';
 import fonts from '../../assets/fonts';
+import palette from '../../assets/colors';
 const styles = StyleSheet.create({
     slide1: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: palette.white
       },
       slide2: {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff'
+        backgroundColor: palette.white
       },
       bttn:{
-        backgroundColor: '#FF3A44',
+        backgroundColor: palette.Primary,
         borderRadius:100,
         // padding: 10,
         paddingBottom: 15,
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
       nextBtn:{
         fontFamily: fonts.BOLD, 
         fontSize: 40,
-        color:'#fff'
+        color:palette.white
       }
 });
 export default styles;

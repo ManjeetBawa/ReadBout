@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import fonts from '../../assets/fonts';
+import palette from '../../assets/colors';
 const styles = StyleSheet.create({
   Loading: {
     flex: 1, 
@@ -22,6 +23,11 @@ const styles = StyleSheet.create({
     fontFamily: fonts.BLACK,
     fontSize: 24,
     color: '#FF3A44'
+  },
+  backbttn :{
+    color:palette.Secondary,
+    fontSize: 24, 
+    fontFamily: fonts.BOLD
   }
 });
 export default styles;

@@ -1,8 +1,6 @@
 import React from 'react';
-import {Text, StyleSheet, View} from 'react-native';
+import {View} from 'react-native';
 import LottieView from 'lottie-react-native';
-
-
 const Splash = () => {
   return (
     <View style={{flex:1, alignItems: 'center', margin:0}}>

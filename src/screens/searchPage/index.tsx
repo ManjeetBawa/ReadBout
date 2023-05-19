@@ -11,12 +11,13 @@ import {useNavigation} from '@react-navigation/native';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import styles from './style';
-import {BASE_URL} from '../../services/endpoints';
+import {API_KEY, BASE_URL} from '../../services/endpoints';
 import AllNewsList from '../../components/allNewsList';
 import Itemdivider from '../../components/itemDivider';
 import LottieView from 'lottie-react-native';
-import fonts from '../../assets/fonts';
 import { Icons } from '../../assets/Icons';
+import palette from '../../assets/colors';
+import { Strings } from '../../constants/strings';
 const SearchItem = prop => {
   const navigation = useNavigation();
   const {goBack} = useNavigation();
@@ -28,7 +29,7 @@ const SearchItem = prop => {
       BASE_URL +
         '/everything?q=' +
         `${searchitem}` +
-        '&apiKey=ba98ff1447a14572bdf276236083a22c',
+        '&'+API_KEY,
     );
     console.log(response.data.articles);
     return response.data;
@@ -37,7 +38,7 @@ const SearchItem = prop => {
   if (isLoading) {
     return (
       <View style={styles.Loading}>
-        <ActivityIndicator color={'#FF3A44'} size={'large'} />
+        <ActivityIndicator color={palette.Primary} size={'large'} />
       </View>
     );
   }
@@ -46,7 +47,7 @@ const SearchItem = prop => {
     if ((error.message = 'Network Error')) {
       return (
         <View style={styles.Loading}>
-          <Text style={styles.NointernetText}>No internet Connection</Text>
+          <Text style={styles.NointernetText}>{Strings.Offline.No_Intenet}</Text>
         <View style={styles.Lottie}>
           <LottieView
         source={require('./129246-no-internet-connection.json')}
@@ -56,7 +57,7 @@ const SearchItem = prop => {
       />
         </View>
         <TouchableOpacity onPress={goBack}>
-        <Text style={{color:'#0080FF',fontSize: 24, fontFamily: fonts.BOLD}}>Go back</Text>
+        <Text style={styles.backbttn}>{Strings.bttn.Go_back}</Text>
         </TouchableOpacity>
         </View>
       );

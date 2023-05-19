@@ -32,6 +32,13 @@ const Favourite = () => {
       </View>
     );
   };
+  if(!favdata) {
+    return (
+      <View style={styles.nodataBox}>
+        <Text style={styles.NodataText}>{Strings.favourite.Nothing}</Text>
+      </View>
+    )
+  }
   if (favdata?.length === 0) {
     return (
       <View style={styles.nodataBox}>

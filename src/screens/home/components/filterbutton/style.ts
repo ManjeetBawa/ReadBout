@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         fontFamily: fonts.REGULAR,
         paddingHorizontal: 16,
         paddingVertical: 8,
-        borderColor: '#F0F1FA',
+        borderColor: palette.grey,
         borderWidth: 1,
         borderRadius: 16,
         marginHorizontal: 8,

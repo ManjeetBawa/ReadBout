@@ -1,24 +1,22 @@
 import {StyleSheet} from 'react-native';
 import fonts from '../../assets/fonts';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import palette from '../../assets/colors';
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: palette.white,
     flex: 1,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    // paddingHorizontal: 15,
     marginTop: 16,
   },
   headerInput: {
     height: 40,
     flexDirection: 'row',
-    // backgroundColor: 'black',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#F0F1FA',
+    borderColor: palette.grey,
     flex: 1,
     borderRadius: 16,
     margin: 10,
@@ -28,14 +26,12 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 12,
     fontFamily: fonts.REGULAR,
-    // backgroundColor: 'pink',
   },
   BelliIcon:{
     paddingRight: 10,
   },
   Carousel: {
     marginVertical: 15,
-    // backgroundColor:'black'
   },
   SeeMoreSection:{
     flexDirection: 'row',
@@ -52,13 +48,13 @@ const styles = StyleSheet.create({
   latestNews: {
     fontSize: 20,
     fontFamily: fonts.TINO_BOLD,
-    color: 'black'
+    color: palette.black,
   },
   SeeMore: {
     fontSize: 15,
     fontFamily: fonts.TINO_BOLD,
     justifyContent: 'center',
-    color: '#0080FF',
+    color: palette.Secondary,
     paddingHorizontal: 5,
   },
   uperimage: {
@@ -67,15 +63,15 @@ const styles = StyleSheet.create({
   },
   author: {
     fontFamily: fonts.BOLD,
-    color: '#fff',
+    color: palette.white,
     fontSize: 15,
   },
   title: {
-    color: '#fff',
+    color: palette.white,
     paddingVertical: 7,
   },
   body: {
-    color: '#fff',
+    color: palette.white,
     marginHorizontal: 16,
   },
   filterItems:{

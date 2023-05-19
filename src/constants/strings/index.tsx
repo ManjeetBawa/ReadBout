@@ -9,6 +9,15 @@ export const Strings = {
     snackbar: {
         Removed : 'Removed from Favourites',
         Added : 'Added to Favourites'
+    },
+    PlaceHolder: {
+        Search_Placeholder: 'Search anything here ...',
+    },
+    Offline : {
+        No_Intenet : 'No Internet Connection',
+    },
+    bttn : {
+        Go_back : 'Go Back'
     }
 
 };

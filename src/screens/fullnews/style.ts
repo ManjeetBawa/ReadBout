@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   authNdate: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: 10
   },
 });
 export default styles;

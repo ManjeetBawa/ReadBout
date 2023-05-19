@@ -9,6 +9,7 @@ import Filterbutton from './components/filterbutton';
 import NewsList from './components/newslists';
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import palette from '../../assets/colors';
 const Home = () => {
   const requestPermissions = () => {
     if (Platform.OS == 'ios') {
@@ -58,7 +59,6 @@ const Home = () => {
   const [searchval, setSearchval] = useState('');
   const searchref = useRef();
   const searchIconHandler = () => {
-    console.log(Keyboard.isVisible())
     if(Keyboard.isVisible()){
       Search();
     }
@@ -94,11 +94,12 @@ const Home = () => {
           <TextInput
             returnKeyType="search"
             value={searchval}
-            placeholder="Search anything here ..."
+            placeholder={Strings.PlaceHolder.Search_Placeholder}
             style={styles.searchArea}
             onChangeText={(val) => setSearchval(val)}
             onEndEditing={Search}
             ref={searchref}
+            placeholderTextColor={palette.black}
           />
           <TouchableOpacity onPress={searchIconHandler}>
             <Icons.VectorSearch width={16} height={14} />
