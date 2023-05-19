@@ -9,10 +9,10 @@ import {
 import styles from './style';
 import {useQuery} from 'react-query';
 import axios from 'axios';
-import AllNewsList from '../commonComponents/allNewsList';
+import AllNewsList from '../../components/allNewsList';
 import {BASE_URL} from '../../services/endpoints';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Itemdivider from '../commonComponents/itemDivider';
+import Itemdivider from '../../components/itemDivider';
 import {useNavigation} from '@react-navigation/native';
 import {Icons} from '../../assets/Icons';
 const SeeAll = () => {

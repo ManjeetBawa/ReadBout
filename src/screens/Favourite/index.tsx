@@ -3,8 +3,8 @@ import {View, Text, FlatList, Pressable, Button} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useNavigation, useIsFocused} from '@react-navigation/native';
 import styles from './style';
-import AllNewsList from '../commonComponents/allNewsList';
-import itemdivider from '../commonComponents/itemDivider';
+import AllNewsList from '../../components/allNewsList';
+import itemdivider from '../../components/itemDivider';
 const Favourite = () => {
   const navigation = useNavigation();
   const isfocused = useIsFocused();

@@ -13,8 +13,7 @@ import axios from 'axios';
 import {BASE_URL} from '../../../../services/endpoints';
 import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import AllNewsList from '../../../commonComponents/allNewsList';
-import SkeletonContent from 'react-native-skeleton-content';
+import AllNewsList from '../../../../components/allNewsList';
 
 interface prop {
   isrefreshing: boolean;

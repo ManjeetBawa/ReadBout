@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import fonts from '../../assets/fonts';
+import palette from '../../assets/colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -15,11 +16,11 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16,
     fontFamily: fonts.BLACK,
-    color: '#000',
+    color: palette.black,
   },
   disc: {
     fontFamily: fonts.REGULAR,
-    color: '#000',
+    color: palette.black,
     paddingVertical: 20,
   },
   FavIcon: {
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
   },
   DateText: {
     fontFamily: fonts.BOLD,
-    color: '#000',
+    color: palette.black,
     fontSize: 15,
     paddingBottom: 5,
   },

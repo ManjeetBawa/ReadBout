@@ -4,7 +4,7 @@ import { Text, View, TouchableOpacity, TextInput, RefreshControl, ScrollView,Pla
 import CarouselLoader from './components/carousel';
 import styles from './style';
 import { Icons } from '../../assets/Icons';
-import { Strings } from '../../strings';
+import { Strings } from '../../constants/strings';
 import Filterbutton from './components/filterbutton';
 import NewsList from './components/newslists';
 import PushNotification from "react-native-push-notification";

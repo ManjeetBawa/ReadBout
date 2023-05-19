@@ -12,8 +12,8 @@ import {useQuery} from 'react-query';
 import axios from 'axios';
 import styles from './style';
 import {BASE_URL} from '../../services/endpoints';
-import AllNewsList from '../commonComponents/allNewsList';
-import Itemdivider from '../commonComponents/itemDivider';
+import AllNewsList from '../../components/allNewsList';
+import Itemdivider from '../../components/itemDivider';
 import NetInfo from '@react-native-community/netinfo';
 import {Icons} from '../../assets/Icons';
 import LottieView from 'lottie-react-native';
@@ -54,10 +54,6 @@ const SearchItem = prop => {
         <View style={styles.Loading}>
           <Text style={styles.NointernetText}>No internet Connection</Text>
         <View style={styles.Lottie}>
-          {/* <Icons.Offline />
-          <TouchableOpacity style={styles.goback} onPress={goBack}>
-          <Icons.GoBackOffline />
-          </TouchableOpacity> */}
           <LottieView
         source={require('./129246-no-internet-connection.json')}
         autoPlay
@@ -66,7 +62,7 @@ const SearchItem = prop => {
       />
         </View>
         <TouchableOpacity onPress={goBack}>
-        <Text style={{color:'#0080FF'}}>Go back</Text>
+        <Text style={{color:'#0080FF',fontSize: 24}}>Go back</Text>
         </TouchableOpacity>
         </View>
       );

@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 import fonts from "../../assets/fonts";
-
+import palette from "../../assets/colors";
 const styles = StyleSheet.create({
     nodataBox:{
         flex: 1,
@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     NodataText:{
         fontFamily: fonts.BOLD,
         fontSize: 20,
-        color: '#FF3A44',
+        color: palette.Primary,
     },
     container:{
         marginTop: 15,
