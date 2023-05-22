@@ -4,11 +4,6 @@ const styles = StyleSheet.create({
     width:'100%', 
     paddingHorizontal: 15,
     marginVertical: 8,
-},
-itemIndicator : {
-  flex:1 , 
-  justifyContent: 'center', 
-  alignItems: 'center'
 }
 })
 

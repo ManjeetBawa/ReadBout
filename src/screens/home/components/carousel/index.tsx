@@ -3,7 +3,6 @@ import {
   Pressable,
   View,
   Dimensions,
-  ActivityIndicator,
 } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
@@ -17,6 +16,7 @@ import AllNewsList from '../../../../components/allNewsList';
 import palette from '../../../../assets/colors';
 import { Countries } from '../../../../services/endpoints';
 import routes from '../../../../assets/routes';
+import ActivityLoader from '../../../../components/ActivityIndicator';
 
 interface prop {
   isrefreshing: boolean;
@@ -54,9 +54,7 @@ const CarouselLoader = ({isrefreshing}: prop) => {
 
   if (isLoading) {
     return(
-    <View> 
-      <ActivityIndicator color={palette.Primary} size={'large'} />
-    </View>
+    <ActivityLoader />
     )
   }
 

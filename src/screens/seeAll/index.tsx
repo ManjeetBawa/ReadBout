@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {
   View,
   FlatList,
-  ActivityIndicator,
   Pressable,
   TouchableOpacity,
 } from 'react-native';
@@ -17,7 +16,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Icons} from '../../assets/Icons';
 import { TOP_HEADLINES } from '../../services/endpoints';
 import { Countries } from '../../services/endpoints';
-import palette from '../../assets/colors';
+import ActivityLoader from '../../components/ActivityIndicator';
 import routes from '../../assets/routes';
 const SeeAll = () => {
   const [offdata, setOffdata] = useState();
@@ -40,9 +39,7 @@ const SeeAll = () => {
 
   if (isLoading) {
     return (
-      <View style={styles.itemIndicator}>
-        <ActivityIndicator color={palette.Primary} size={'large'} />
-      </View>
+     <ActivityLoader/>
     );
   }
   const renderItem = ({item}) => {

@@ -3,7 +3,6 @@ import {
   FlatList,
   View,
   Pressable,
-  ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
@@ -17,6 +16,7 @@ import Itemdivider from '../../../../components/itemDivider';
 import { TOP_HEADLINES } from '../../../../services/endpoints';
 import { Countries } from '../../../../services/endpoints';
 import routes from '../../../../assets/routes';
+import ActivityLoader from '../../../../components/ActivityIndicator';
 interface Props {
   category: string;
   isrefreshing: boolean;
@@ -57,8 +57,8 @@ const NewsList = ({category, isrefreshing}: Props) => {
   }
   if (isLoading) {
     return (
-        <ActivityIndicator color={palette.Primary} size={'large'} />
-    );
+      <ActivityLoader/>
+      );
   }
   if (error) {
     AsyncStorage.getItem(`${category}`).then(Response => {
