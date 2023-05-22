@@ -8,13 +8,10 @@ import Carousel from 'react-native-snap-carousel';
 import {useNavigation} from '@react-navigation/native';
 import {useQuery} from 'react-query';
 import axios from 'axios';
-import {BASE_URL, TOP_HEADLINES} from '../../../../services/endpoints';
-import { API_KEY } from '../../../../services/endpoints';
+import {BASE_URL, TOP_HEADLINES, API_KEY,Countries} from '../../../../services/endpoints';
 import styles from './style';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AllNewsList from '../../../../components/allNewsList';
-import palette from '../../../../assets/colors';
-import { Countries } from '../../../../services/endpoints';
 import routes from '../../../../assets/routes';
 import ActivityLoader from '../../../../components/ActivityIndicator';
 
@@ -42,8 +39,7 @@ const CarouselLoader = ({isrefreshing}: prop) => {
   };
   const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
-      BASE_URL +
-        TOP_HEADLINES+'?'+Countries.India+'&'+API_KEY,
+      BASE_URL + TOP_HEADLINES+'?'+Countries.India+'&'+API_KEY,
     );
     await AsyncStorage.setItem('LatestNews', JSON.stringify(response.data));
     return response.data;

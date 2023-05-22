@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  ActivityIndicator,
   FlatList,
   Pressable,
   TouchableOpacity,
@@ -11,24 +10,24 @@ import {useNavigation} from '@react-navigation/native';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import styles from './style';
-import {API_KEY, BASE_URL} from '../../services/endpoints';
+import {API_KEY, BASE_URL, EVERYTHING} from '../../services/endpoints';
 import AllNewsList from '../../components/allNewsList';
 import Itemdivider from '../../components/itemDivider';
 import LottieView from 'lottie-react-native';
 import { Icons } from '../../assets/Icons';
-import palette from '../../assets/colors';
 import { Strings } from '../../constants/strings';
 import routes from '../../assets/routes';
+import ActivityLoader from '../../components/ActivityIndicator';
 const SearchItem = prop => {
   const navigation = useNavigation();
   const {goBack} = useNavigation();
   const searchitem = prop.route.params.searchval;
   console.log(prop.route.params.searchval);
 
-  const {isLoading, error, data, refetch} = useQuery('SearchApi', async () => {
+  const {isLoading, error, data} = useQuery('SearchApi', async () => {
     const response = await axios.get(
-      BASE_URL +
-        '/everything?q=' +
+      BASE_URL +EVERYTHING+
+        '?q=' +
         `${searchitem}` +
         '&'+API_KEY,
     );
@@ -38,9 +37,7 @@ const SearchItem = prop => {
 
   if (isLoading) {
     return (
-      <View style={styles.Loading}>
-        <ActivityIndicator color={palette.Primary} size={'large'} />
-      </View>
+     <ActivityLoader/>
     );
   }
 
@@ -93,7 +90,7 @@ const SearchItem = prop => {
       />
        <TouchableOpacity
         onPress={goBack}
-        style={{top: 10, left: 10, position: 'absolute'}}>
+        style={styles.goback_bttn}>
         <Icons.goBack height={45} width={45} />
       </TouchableOpacity>
     </View>

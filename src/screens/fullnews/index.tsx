@@ -6,10 +6,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Snackbar from 'react-native-snackbar';
 import fonts from '../../assets/fonts';
 import { format } from 'date-fns';
-import { Strings } from '../../constants/strings';
 import { useNavigation } from '@react-navigation/native';
-import { defaultImage } from '../../constants/strings';
-import { dateFormat } from '../../constants/strings';
+import { defaultImage, dateFormat, Strings } from '../../constants/strings';
 import palette from '../../assets/colors';
 const News = params => {
   const item = params.route.params.item;
@@ -76,7 +74,6 @@ const News = params => {
   }, []);
   const date = new Date(`${item.publishedAt.slice(0, 10)}`);
   return (
-    
     <View style={styles.container}>
       <Image
         source={{

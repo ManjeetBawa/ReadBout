@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
       bttn:{
         backgroundColor: palette.Primary,
         borderRadius:100,
-        // padding: 10,
         paddingBottom: 15,
         paddingHorizontal: 14,
       },

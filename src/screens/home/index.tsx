@@ -110,6 +110,9 @@ const Home = () => {
           <Icons.Bell width={40} height={36} />
         </TouchableOpacity>
       </View>
+      <ScrollView refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
+      }>
       {/* ------------------------------See More Box---------------- */}
       <View style={styles.seeMoreBox}>
         <Text style={styles.latestNews}>{Strings.home.latest_news}</Text>
@@ -119,9 +122,6 @@ const Home = () => {
         </TouchableOpacity>
       </View>
       {/* -----------------------------------------Carousel--------------------------------- */}
-      <ScrollView refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} />
-      }>
         <View>
           <View style={styles.Carousel}>
             <CarouselLoader isrefreshing={refreshing} />
@@ -129,6 +129,7 @@ const Home = () => {
           <View style={styles.filterItems}>
             <Filterbutton getfilter={val => getfilter(val)} />
           </View>
+          
           <View>
             <NewsList category={filter} isrefreshing={refreshing} />
           </View>

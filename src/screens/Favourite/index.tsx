@@ -50,7 +50,6 @@ const Favourite = () => {
   return (
     <View style={styles.container}>
       <FlatList data={favdata} renderItem={renderItem} ItemSeparatorComponent={itemdivider} />
-      
     </View>
   );
 };

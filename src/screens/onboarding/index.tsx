@@ -8,7 +8,6 @@ import palette from '../../assets/colors';
 import routes from '../../assets/routes';
 
 const SwiperComponent = () => {
-  const navigation = useNavigation();
   const {dispatch} = useNavigation();
   const ToDashBoard = () => {
     dispatch(

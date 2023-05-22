@@ -6,15 +6,12 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import styles from './style';
-import {API_KEY, BASE_URL} from '../../../../services/endpoints';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import AllNewsList from '../../../../components/allNewsList';
-import palette from '../../../../assets/colors';
 import Itemdivider from '../../../../components/itemDivider';
-import { TOP_HEADLINES } from '../../../../services/endpoints';
-import { Countries } from '../../../../services/endpoints';
+import { TOP_HEADLINES ,Countries,API_KEY, BASE_URL} from '../../../../services/endpoints';
 import routes from '../../../../assets/routes';
 import ActivityLoader from '../../../../components/ActivityIndicator';
 interface Props {

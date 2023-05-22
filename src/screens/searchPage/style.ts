@@ -28,6 +28,11 @@ const styles = StyleSheet.create({
     color:palette.Secondary,
     fontSize: 24, 
     fontFamily: fonts.BOLD
+  },
+  goback_bttn : {
+    top: 10, 
+    left: 10, 
+    position: 'absolute'
   }
 });
 export default styles;

@@ -1,10 +1,5 @@
 import React, {useState} from 'react';
-import {
-  View,
-  FlatList,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native';
+import {View, FlatList, Pressable, TouchableOpacity} from 'react-native';
 import styles from './style';
 import {useQuery} from 'react-query';
 import axios from 'axios';
@@ -14,15 +9,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Itemdivider from '../../components/itemDivider';
 import {useNavigation} from '@react-navigation/native';
 import {Icons} from '../../assets/Icons';
-import { TOP_HEADLINES } from '../../services/endpoints';
-import { Countries } from '../../services/endpoints';
+import {TOP_HEADLINES} from '../../services/endpoints';
+import {Countries} from '../../services/endpoints';
 import ActivityLoader from '../../components/ActivityIndicator';
 import routes from '../../assets/routes';
 const SeeAll = () => {
   const [offdata, setOffdata] = useState();
-  const navigation = useNavigation();
+  const {navigate} = useNavigation();
   const FullNews = item => {
-    navigation.navigate(routes.News.path, {item});
+    navigate(routes.News.path, {item});
   };
   const {goBack} = useNavigation();
   const gobackhandler = () => {
@@ -31,16 +26,13 @@ const SeeAll = () => {
 
   const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
-      BASE_URL +
-      TOP_HEADLINES+'?'+Countries.India+'&'+API_KEY,
+      BASE_URL + TOP_HEADLINES + '?' + Countries.India + '&' + API_KEY,
     );
     return response.data;
   });
 
   if (isLoading) {
-    return (
-     <ActivityLoader/>
-    );
+    return <ActivityLoader />;
   }
   const renderItem = ({item}) => {
     const date = new Date(`${item.publishedAt.slice(0, 10)}`);
@@ -77,9 +69,7 @@ const SeeAll = () => {
         data={data.articles}
         ItemSeparatorComponent={Itemdivider}
       />
-      <TouchableOpacity
-        onPress={gobackhandler}
-        style={{top: 10, left: 10, position: 'absolute'}}>
+      <TouchableOpacity onPress={gobackhandler} style={styles.goBack_bttn}>
         <Icons.goBack height={45} width={45} />
       </TouchableOpacity>
     </View>
