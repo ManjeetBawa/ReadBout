@@ -10,6 +10,7 @@ import NewsList from './components/newslists';
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
 import palette from '../../assets/colors';
+import routes from '../../assets/routes';
 const Home = () => {
   const requestPermissions = () => {
     if (Platform.OS == 'ios') {
@@ -70,14 +71,14 @@ const Home = () => {
   const Search = () => {
     console.log('Search Clicked');
     if (!(searchval.trim() === '')) {
-      navigation.navigate('SearchItem', { searchval });
+      navigation.navigate(routes.SearchItem.path, { searchval });
     }
   };
   const getfilter = (value: string) => {
     setfilter(value);
   };
   const SeeAllHandler = () => {
-    navigation.navigate('SeeAll');
+    navigation.navigate(routes.SeeAll.path);
   }
   const handleRefresh = () => {
     setRefreshing(true);

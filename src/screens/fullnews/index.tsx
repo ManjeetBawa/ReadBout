@@ -27,7 +27,7 @@ const News = params => {
         Snackbar.show({
             text: Strings.snackbar.Added,
             duration: Snackbar.LENGTH_SHORT,
-            textColor: palette.black,
+            textColor: palette.Primary,
             backgroundColor: palette.white,
             fontFamily: fonts.BOLD,
           });
@@ -41,6 +41,13 @@ const News = params => {
         console.log('Error adding item to favorites', e);
       }
     } else {
+      Snackbar.show({
+        text: Strings.snackbar.Removed,
+        duration: Snackbar.LENGTH_SHORT,
+        textColor: palette.Primary,
+        backgroundColor: palette.white,
+        fontFamily: fonts.BOLD,
+      });
         setActive(false);
         let pushmatch= matchingfinal.filter((res)=>{
              return item.title !==res

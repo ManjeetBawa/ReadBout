@@ -18,6 +18,7 @@ import LottieView from 'lottie-react-native';
 import { Icons } from '../../assets/Icons';
 import palette from '../../assets/colors';
 import { Strings } from '../../constants/strings';
+import routes from '../../assets/routes';
 const SearchItem = prop => {
   const navigation = useNavigation();
   const {goBack} = useNavigation();
@@ -71,7 +72,7 @@ const SearchItem = prop => {
 
 
   const To_fullnews = item => {
-    navigation.navigate('News', {item});
+    navigation.navigate(routes.News.path, {item});
   };
   const renderitem = ({item}) => {
     const date = new Date(`${item.publishedAt.slice(0, 10)}`);

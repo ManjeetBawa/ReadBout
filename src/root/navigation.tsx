@@ -1,20 +1,14 @@
 import {NavigationContainer} from '@react-navigation/native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import Home from '../screens/home';
 import {createStackNavigator} from '@react-navigation/stack';
 import Splash from '../screens/splash';
 import {useEffect, useState} from 'react';
 import News from '../screens/fullnews';
-import {Icons} from '../assets/Icons';
-import styles from './styles';
-import Favourite from '../screens/Favourite';
 import SearchItem from '../screens/searchPage';
 import SwiperComponent from '../screens/onboarding';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import DashboardNavigation from './DashboardNavigation';
 import SeeAll from '../screens/seeAll';
-import palette from '../assets/colors';
-
-const BottomTabs = createBottomTabNavigator();
+import routes from '../assets/routes';
 
 const Navigation = () => {
   const [onboard, setOnboard] = useState(true);
@@ -32,44 +26,6 @@ const Navigation = () => {
 
   const [showSplash, setShowSplash] = useState(true);
 
-  const DashboardNavigation = () => {
-    return (
-      <BottomTabs.Navigator
-        screenOptions={{
-          headerShown: false,
-          tabBarStyle: styles.bottomTab,
-          tabBarLabelStyle: styles.tabBarLabelStyle,
-          tabBarActiveTintColor: palette.Primary,
-        }}>
-        <BottomTabs.Screen
-          component={Home}
-          name="Home"
-          options={{
-            tabBarIcon: ({focused}) =>
-              focused ? (
-                <Icons.HomeActive height={25} width={25} />
-              ) : (
-                <Icons.HomeInactive height={25} width={25} />
-              ),
-          }}
-        />
-        <BottomTabs.Screen
-          name="Favourite"
-          component={Favourite}
-          options={{
-            headerShown: false,
-            tabBarIcon: ({focused}) =>
-              focused ? (
-                <Icons.FavActive height={25} width={25} />
-              ) : (
-                <Icons.FavInactive height={25} width={25} />
-              ),
-          }}
-        />
-      </BottomTabs.Navigator>
-    );
-  };
-
   useEffect(() => {
     setTimeout(() => {
       setShowSplash(false);
@@ -80,35 +36,35 @@ const Navigation = () => {
       <Stack.Navigator>
         {showSplash ? (
           <Stack.Screen
-            name="Splash"
+            name={routes.splash.path}
             component={Splash}
             options={{headerShown: false}}
           />
         ) : null}
         {onboard ? (
           <Stack.Screen
-            name="SwiperComponent"
+            name={routes.SwiperComponent.path}
             component={SwiperComponent}
             options={{headerShown: false}}
           />
         ) : null}
         <Stack.Screen
-          name="DashboardNavigation"
+          name={routes.Dashboard.path}
           component={DashboardNavigation}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="News"
+          name={routes.News.path}
           component={News}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="SearchItem"
+          name={routes.SearchItem.path}
           component={SearchItem}
           options={{headerShown: false}}
         />
         <Stack.Screen
-          name="SeeAll"
+          name={routes.SeeAll.path}
           component={SeeAll}
           options={{headerShown: false}}
         />

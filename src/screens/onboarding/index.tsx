@@ -5,6 +5,7 @@ import styles from './style';
 import {Icons} from '../../assets/Icons';
 import {useNavigation, CommonActions} from '@react-navigation/native';
 import palette from '../../assets/colors';
+import routes from '../../assets/routes';
 
 const SwiperComponent = () => {
   const navigation = useNavigation();
@@ -13,7 +14,7 @@ const SwiperComponent = () => {
     dispatch(
       CommonActions.reset({
         index: 1,
-        routes: [{name: 'DashboardNavigation'}],
+        routes: [{name: routes.Dashboard.path}],
       }),
     );
   };

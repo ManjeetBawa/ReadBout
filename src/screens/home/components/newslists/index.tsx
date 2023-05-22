@@ -16,6 +16,7 @@ import palette from '../../../../assets/colors';
 import Itemdivider from '../../../../components/itemDivider';
 import { TOP_HEADLINES } from '../../../../services/endpoints';
 import { Countries } from '../../../../services/endpoints';
+import routes from '../../../../assets/routes';
 interface Props {
   category: string;
   isrefreshing: boolean;
@@ -24,7 +25,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
   const [offdata, setOffdata] = useState();
   const navigation = useNavigation();
   const FullNews = item => {
-    navigation.navigate('News', {item});
+    navigation.navigate(routes.News.path, {item});
   };
 
   const renderItem = ({item}) => {
@@ -43,7 +44,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
     async () => {
       const response = await axios.get(
         BASE_URL +
-          TOP_HEADLINES+'?country='+Countries.India+'&category=' +
+          TOP_HEADLINES+'?'+Countries.India+'&category=' +
           `${category}` +
           '&'+API_KEY,
       );
@@ -65,22 +66,18 @@ const NewsList = ({category, isrefreshing}: Props) => {
     });
     if (offdata) {
       return (
-        <View>
           <FlatList renderItem={renderItem} data={offdata.articles} />
-        </View>
       );
     } else {
       return null;
     }
   }
   return (
-    <View>
       <FlatList
         renderItem={renderItem}
         data={data.articles}
         ItemSeparatorComponent={Itemdivider}
       />
-    </View>
   );
 };
 export default NewsList;

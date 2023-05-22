@@ -18,21 +18,22 @@ import {Icons} from '../../assets/Icons';
 import { TOP_HEADLINES } from '../../services/endpoints';
 import { Countries } from '../../services/endpoints';
 import palette from '../../assets/colors';
+import routes from '../../assets/routes';
 const SeeAll = () => {
   const [offdata, setOffdata] = useState();
   const navigation = useNavigation();
   const FullNews = item => {
-    navigation.navigate('News', {item});
+    navigation.navigate(routes.News.path, {item});
   };
   const {goBack} = useNavigation();
   const gobackhandler = () => {
     goBack();
   };
 
-  const {error, data, refetch, isLoading} = useQuery('LatestNewsagain', async () => {
+  const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
       BASE_URL +
-      TOP_HEADLINES+'?country='+Countries.India+'&'+API_KEY,
+      TOP_HEADLINES+'?'+Countries.India+'&'+API_KEY,
     );
     return response.data;
   });
