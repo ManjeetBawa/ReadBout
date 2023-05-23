@@ -130,7 +130,7 @@ const Home = () => {
             <Filterbutton getfilter={val => getfilter(val)} />
           </View>
           
-          <View>
+          <View style={styles.Newslist}>
             <NewsList category={filter} isrefreshing={refreshing} />
           </View>
         </View>

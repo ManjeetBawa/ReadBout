@@ -13,6 +13,7 @@ import {TOP_HEADLINES} from '../../services/endpoints';
 import {Countries} from '../../services/endpoints';
 import ActivityLoader from '../../components/ActivityIndicator';
 import routes from '../../assets/routes';
+import { Text } from 'react-native-svg';
 const SeeAll = () => {
   const [offdata, setOffdata] = useState();
   const {navigate} = useNavigation();
@@ -63,7 +64,8 @@ const SeeAll = () => {
   }
 
   return (
-    <View>
+    <View >
+     
       <FlatList
         renderItem={renderItem}
         data={data.articles}

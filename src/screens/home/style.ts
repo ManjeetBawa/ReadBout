@@ -77,6 +77,9 @@ const styles = StyleSheet.create({
   filterItems:{
       marginBottom: 24,
       marginHorizontal: 15,
+  },
+  Newslist : {
+    marginBottom: 55,
   }
 });
 

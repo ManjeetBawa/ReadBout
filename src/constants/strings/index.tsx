@@ -3,6 +3,9 @@ export const Strings = {
         latest_news: 'Latest News',
         see_all : 'See All',
     },
+    Search_Page: {
+        No_result : 'No result found for '
+    },
     favourite : {
         Nothing : 'Nothing to show',
     },

@@ -7,6 +7,7 @@ import AllNewsList from '../../components/allNewsList';
 import itemdivider from '../../components/itemDivider';
 import { Strings } from '../../constants/strings';
 import routes from '../../assets/routes';
+import { ScrollView } from 'react-native-gesture-handler';
 const Favourite = () => {
   const navigation = useNavigation();
   const isfocused = useIsFocused();
@@ -48,9 +49,11 @@ const Favourite = () => {
     );
   }
   return (
+    <ScrollView style={styles.page}>
     <View style={styles.container}>
       <FlatList data={favdata} renderItem={renderItem} ItemSeparatorComponent={itemdivider} />
     </View>
+    </ScrollView>
   );
 };
 

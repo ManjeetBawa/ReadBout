@@ -33,6 +33,18 @@ const styles = StyleSheet.create({
     top: 10, 
     left: 10, 
     position: 'absolute'
+  },
+  noresult: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10
+  }
+  ,
+  noresultText :{
+    fontSize: 17,
+    fontFamily: fonts.BOLD,
+    color: palette.Primary
   }
 });
 export default styles;

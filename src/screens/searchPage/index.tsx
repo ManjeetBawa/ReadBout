@@ -81,6 +81,21 @@ const SearchItem = prop => {
       </View>
     );
   };
+  if(data.articles.length===0)
+  {
+    return (
+      
+      <View style={styles.noresult}><Text style={styles.noresultText}>{Strings.Search_Page.No_result} "`{searchitem}`"</Text>
+        <TouchableOpacity
+        onPress={goBack}
+        style={styles.goback_bttn}>
+        <Icons.goBack height={45} width={45} />
+      </TouchableOpacity>
+      </View>
+      
+      
+    )
+  }
   return (
     <View style={styles.flatlistBox}>
       <FlatList
