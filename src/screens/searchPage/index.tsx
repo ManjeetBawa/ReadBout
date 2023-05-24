@@ -18,6 +18,7 @@ import { Icons } from '../../assets/Icons';
 import { Strings } from '../../constants/strings';
 import routes from '../../assets/routes';
 import ActivityLoader from '../../components/ActivityIndicator';
+import Header from '../../components/header';
 const SearchItem = prop => {
   const navigation = useNavigation();
   const {goBack} = useNavigation();
@@ -84,30 +85,26 @@ const SearchItem = prop => {
   if(data.articles.length===0)
   {
     return (
-      
+      <View>
+      <Header header='Search'/>
       <View style={styles.noresult}><Text style={styles.noresultText}>{Strings.Search_Page.No_result} "`{searchitem}`"</Text>
-        <TouchableOpacity
-        onPress={goBack}
-        style={styles.goback_bttn}>
-        <Icons.goBack height={45} width={45} />
-      </TouchableOpacity>
+      </View>
       </View>
       
       
     )
   }
   return (
+    <View style={styles.box}>
+    <Header header='Search'/>
     <View style={styles.flatlistBox}>
+      
       <FlatList
         renderItem={renderitem}
         data={data.articles}
         ItemSeparatorComponent={Itemdivider}
       />
-       <TouchableOpacity
-        onPress={goBack}
-        style={styles.goback_bttn}>
-        <Icons.goBack height={45} width={45} />
-      </TouchableOpacity>
+    </View>
     </View>
   );
 };

@@ -10,7 +10,10 @@ import { useNavigation } from '@react-navigation/native';
 import { defaultImage, dateFormat, Strings } from '../../constants/strings';
 import palette from '../../assets/colors';
 const News = params => {
+  
   const item = params.route.params.item;
+  const focus = params.route.params?.focus;
+  console.log('focus' , focus)
   const {goBack} = useNavigation();
   const [active, setActive] = useState<boolean>(false);
   const gobackhandler = () => {
@@ -39,13 +42,7 @@ const News = params => {
         console.log('Error adding item to favorites', e);
       }
     } else {
-      Snackbar.show({
-        text: Strings.snackbar.Removed,
-        duration: Snackbar.LENGTH_SHORT,
-        textColor: palette.Primary,
-        backgroundColor: palette.white,
-        fontFamily: fonts.BOLD,
-      });
+     
         setActive(false);
         let pushmatch= matchingfinal.filter((res)=>{
              return item.title !==res
@@ -57,6 +54,19 @@ const News = params => {
       )
       await AsyncStorage.setItem('favorites', JSON.stringify(pushfav));
       await AsyncStorage.setItem('matching', JSON.stringify(pushmatch));
+      if(focus){
+      goBack();
+      }
+      else{
+         Snackbar.show({
+        text: Strings.snackbar.Removed,
+        duration: Snackbar.LENGTH_SHORT,
+        textColor: palette.Primary,
+        backgroundColor: palette.white,
+        fontFamily: fonts.BOLD,
+      });
+      }
+     
     }
   };
   useEffect(() => {

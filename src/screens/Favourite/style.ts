@@ -28,5 +28,9 @@ const styles = StyleSheet.create({
         marginBottom: 8,
         marginVertical: 4
     },
+    headerbox: {
+        backgroundColor: '#fff', 
+        flex: 1
+    }
 })
 export default styles;

@@ -2,9 +2,9 @@ import {StyleSheet} from 'react-native';
 import palette from '../../assets/colors';
 const styles = StyleSheet.create({
     divider:{
-        height: 1,
+        height: 0.5,
         width: "100%",
-        backgroundColor: palette.black,
+        backgroundColor:  palette.darkGrey,
         marginBottom: 5,
       }
 });

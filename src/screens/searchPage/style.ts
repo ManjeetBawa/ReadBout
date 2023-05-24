@@ -2,6 +2,10 @@ import {StyleSheet} from 'react-native';
 import fonts from '../../assets/fonts';
 import palette from '../../assets/colors';
 const styles = StyleSheet.create({
+  box:{
+    backgroundColor: palette.white,
+    flex: 1,
+  },
   Loading: {
     flex: 1, 
     justifyContent:'center' , 
@@ -9,7 +13,6 @@ const styles = StyleSheet.create({
   },
   flatlistBox: {
     paddingHorizontal: 15,
-    marginTop: 16,
   },
   goback: {
     position:'absolute' ,
@@ -35,10 +38,9 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   noresult: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginHorizontal: 10
+    marginHorizontal: 10,
   }
   ,
   noresultText :{

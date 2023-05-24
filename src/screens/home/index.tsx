@@ -98,7 +98,7 @@ const Home = () => {
             placeholder={Strings.PlaceHolder.Search_Placeholder}
             style={styles.searchArea}
             onChangeText={(val) => setSearchval(val)}
-            onEndEditing={Search}
+            onSubmitEditing={Search}
             ref={searchref}
             placeholderTextColor={palette.black}
           />

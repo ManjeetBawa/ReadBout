@@ -1,19 +1,16 @@
 import React, {useState} from 'react';
-import {View, FlatList, Pressable, TouchableOpacity} from 'react-native';
+import {View, FlatList, Pressable} from 'react-native';
 import styles from './style';
 import {useQuery} from 'react-query';
 import axios from 'axios';
 import AllNewsList from '../../components/allNewsList';
-import {API_KEY, BASE_URL} from '../../services/endpoints';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Itemdivider from '../../components/itemDivider';
 import {useNavigation} from '@react-navigation/native';
-import {Icons} from '../../assets/Icons';
-import {TOP_HEADLINES} from '../../services/endpoints';
-import {Countries} from '../../services/endpoints';
+import {TOP_HEADLINES, Countries,API_KEY, BASE_URL} from '../../services/endpoints';
 import ActivityLoader from '../../components/ActivityIndicator';
 import routes from '../../assets/routes';
-import { Text } from 'react-native-svg';
+import Header from '../../components/header';
 const SeeAll = () => {
   const [offdata, setOffdata] = useState();
   const {navigate} = useNavigation();
@@ -21,9 +18,6 @@ const SeeAll = () => {
     navigate(routes.News.path, {item});
   };
   const {goBack} = useNavigation();
-  const gobackhandler = () => {
-    goBack();
-  };
 
   const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
@@ -65,15 +59,12 @@ const SeeAll = () => {
 
   return (
     <View >
-     
+     <Header header='See All' />
       <FlatList
         renderItem={renderItem}
         data={data.articles}
         ItemSeparatorComponent={Itemdivider}
       />
-      <TouchableOpacity onPress={gobackhandler} style={styles.goBack_bttn}>
-        <Icons.goBack height={45} width={45} />
-      </TouchableOpacity>
     </View>
   );
 };

@@ -10,7 +10,7 @@ import SecondScreen from './SecondScreen.svg';
 import goBack from './goBack.svg';
 import Offline from './Offline.svg';
 import GoBackOffline from './GoBackOffilne.svg';
-// import Fav
+import back_simple from './back_simple.svg';
 export const Icons = {
   Bell,
   VectorSearch,
@@ -24,4 +24,5 @@ export const Icons = {
   goBack,
   Offline,
   GoBackOffline,
+  back_simple
 };
