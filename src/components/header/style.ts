@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import palette from '../../assets/colors';
+import fonts from '../../assets/fonts';
 
 const styles = StyleSheet.create({
   header: {
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
   headerText : {
     fontSize: 20, 
     color: palette.black,
-    // backgroundColor: 'green'
+    fontFamily: fonts.BOLD,
   },
   back_button : {
     position: 'absolute', 

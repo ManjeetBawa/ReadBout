@@ -17,9 +17,8 @@ const SeeAll = () => {
   const FullNews = item => {
     navigate(routes.News.path, {item});
   };
-  const {goBack} = useNavigation();
 
-  const {error, data, refetch, isLoading} = useQuery('LatestNews', async () => {
+  const {error, data, isLoading} = useQuery('LatestNews', async () => {
     const response = await axios.get(
       BASE_URL + TOP_HEADLINES + '?' + Countries.India + '&' + API_KEY,
     );
@@ -46,11 +45,14 @@ const SeeAll = () => {
     });
     if (offdata) {
       return (
+        <View >
+        <Header header='See All' />
         <FlatList
           renderItem={renderItem}
           data={data.articles}
           ItemSeparatorComponent={Itemdivider}
         />
+        </View>
       );
     } else {
       return null;
@@ -58,7 +60,7 @@ const SeeAll = () => {
   }
 
   return (
-    <View >
+    <View>
      <Header header='See All' />
       <FlatList
         renderItem={renderItem}

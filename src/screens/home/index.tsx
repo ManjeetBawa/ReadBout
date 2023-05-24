@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Text, View, TouchableOpacity, TextInput, RefreshControl, ScrollView,Platform, Keyboard } from 'react-native';
+import { Text, View, TouchableOpacity, TextInput, RefreshControl, ScrollView,Platform, Keyboard, PermissionsAndroid } from 'react-native';
 import CarouselLoader from './components/carousel';
 import styles from './style';
 import { Icons } from '../../assets/Icons';
@@ -46,7 +46,22 @@ const Home = () => {
     createNotificationChannel();
   },[])
 
+  const getPermission = async () => {
+    try {
+      const permission = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS,
+      );
+      if (permission === 'granted') {
+        console.log('granted')
+      }
+    } catch (error) {
+      return <Text>returning error</Text>;
+    }
+  };
   const testpush = () => {
+  
+    getPermission();
+
     PushNotification.localNotification({
       channelId: "buddy",
       title: "Bell Pressed", 
@@ -70,7 +85,7 @@ const Home = () => {
   };
   const Search = () => {
     console.log('Search Clicked');
-    if (!(searchval.trim() === '')) {
+    if (searchval.trim() !== '') {
       navigation.navigate(routes.SearchItem.path, { searchval });
     }
   };
