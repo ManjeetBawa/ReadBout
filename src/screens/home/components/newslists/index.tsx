@@ -17,8 +17,10 @@ import ActivityLoader from '../../../../components/ActivityIndicator';
 interface Props {
   category: string;
   isrefreshing: boolean;
+  sources: string;
 }
-const NewsList = ({category, isrefreshing}: Props) => {
+const NewsList = ({category, isrefreshing,sources}: Props) => {
+  console.log('newslistsources', sources)
   const [offdata, setOffdata] = useState();
   const navigation = useNavigation();
   const FullNews = item => {
@@ -42,7 +44,7 @@ const NewsList = ({category, isrefreshing}: Props) => {
       const response = await axios.get(
         BASE_URL +
           TOP_HEADLINES+'?'+Countries.India+'&category=' +
-          `${category}` +
+          `${category}` + 
           '&'+API_KEY,
       );
       await AsyncStorage.setItem(`${category}`, JSON.stringify(response.data));

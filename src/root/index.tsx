@@ -3,6 +3,7 @@ import Navigation from './navigation';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import PushNotification from "react-native-push-notification";
 import PushNotificationIOS from "@react-native-community/push-notification-ios";
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 PushNotification.configure({
   onRegister: function (token) {
@@ -32,9 +33,13 @@ PushNotification.configure({
 const queryClient = new QueryClient();
 const App = () => {
   return (
+    <GestureHandlerRootView style={{flex: 1}}> 
     <QueryClientProvider client={queryClient}>
+      
       <Navigation />
+     
     </QueryClientProvider>
+     </GestureHandlerRootView>
   );
 };
 

@@ -80,7 +80,29 @@ const styles = StyleSheet.create({
   },
   Newslist : {
     marginBottom: 55,
-  }
+  },
+  itembox: {
+    borderColor: palette.grey,
+    borderWidth: 2,
+    marginVertical : 3,
+    marginHorizontal: 10,
+    borderRadius: 8,
+  },
+  itemtext: {
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  savebutton:{
+    backgroundColor: palette.Primary,
+    padding: 10,
+    marginVertical: 16,
+    marginHorizontal: 100,
+    borderRadius: 8,
+  },
+  saveText :{
+    color: palette.white,
+    textAlign: 'center',
+  },
 });
 
 export default styles;
