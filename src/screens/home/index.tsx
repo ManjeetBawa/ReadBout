@@ -32,12 +32,13 @@ const Home = () => {
   const [show, setShow] = useState(false);
   const snapPoints = useMemo(() => ['28%', '50%'], []);
   const [sourceString, setSourcestring] = useState('');
-  const [sourcelist, setSourcelist] = useState([]);
+  const [sourcelist, setSourcelist] = useState('publishedAt');
   const handleClosePress = () => {
-    const mysources = sourcelist.join(',');
-    setSourcestring(mysources);
-    console.log('sourcesstring', mysources);
+    // const mysources = sourcelist.join(',');
+    setSourcestring(sourcelist);
+    // console.log('sourcesstring', mysources);
     sheetRef.current?.close();
+    
   };
   const handleOpenPress = useCallback(() => {
     sheetRef.current?.expand();
@@ -132,21 +133,14 @@ const Home = () => {
     }, 1500);
   };
   const selectSource = item => {
-    if (sourcelist.includes(item.source)) {
-      const NewSourceList = sourcelist.filter(val => val != item.source);
-      setSourcelist(NewSourceList);
-      console.log(NewSourceList);
-    } else {
-      const newlist = [...sourcelist, item.source];
-      setSourcelist(newlist);
-      console.log(newlist);
-    }
+   setSourcelist(item.source);
+  
   };
   const rendersource = ({item}) => {
-    const backgroundColor = sourcelist.includes(item.source)
+    const backgroundColor = sourcelist==item.source
       ? palette.Primary
       : palette.white;
-    const color = sourcelist?.includes(item.source)
+    const color =  sourcelist==item.source
       ? palette.white
       : palette.black;
     return (
@@ -216,7 +210,7 @@ const Home = () => {
                   borderRadius: 16,
                   marginLeft: 15,
                 }}>
-                Filter
+                Sort by
               </Text>
             </TouchableOpacity>
             <View style={styles.filterItems}>

@@ -29,9 +29,7 @@ export const defaultImage = 'https://media.istockphoto.com/id/1390033645/photo/w
 export const dateFormat = 'EEEE, do MMMM yyyy';
 
 export const sources = [
-    {source: 'BBC-News'},
-    {source: 'CNN'},
-    {source: 'NYT'},
-    {source: 'WION'},
-    {source: 'ANI'},
+    {source: 'publishedAt'},
+    {source: 'relevancy'},
+    {source: 'popularity'}
 ]

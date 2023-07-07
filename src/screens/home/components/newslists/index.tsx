@@ -39,15 +39,15 @@ const NewsList = ({category, isrefreshing,sources}: Props) => {
   };
 
   const {isLoading, error, data, refetch} = useQuery(
-    `${category}`,
+    `${category}+${sources}`,
     async () => {
       const response = await axios.get(
         BASE_URL +
           TOP_HEADLINES+'?'+Countries.India+'&category=' +
-          `${category}` + 
+          `${category}` + '&sortBy='+`${sources}`+
           '&'+API_KEY,
       );
-      await AsyncStorage.setItem(`${category}`, JSON.stringify(response.data));
+      await AsyncStorage.setItem(`${category}+${sources}`, JSON.stringify(response.data));
       return response.data;
     },
   );
@@ -60,7 +60,7 @@ const NewsList = ({category, isrefreshing,sources}: Props) => {
       );
   }
   if (error) {
-    AsyncStorage.getItem(`${category}`).then(Response => {
+    AsyncStorage.getItem(`${category}+${sources}`).then(Response => {
       setOffdata(JSON.parse(Response));
     });
     if (offdata) {

@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
   itemtext: {
     fontSize: 20,
     textAlign: 'center',
+    fontFamily: fonts.NEW_YORK_SMALL_BOLD
   },
   savebutton:{
     backgroundColor: palette.Primary,

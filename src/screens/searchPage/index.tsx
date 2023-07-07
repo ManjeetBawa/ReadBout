@@ -48,7 +48,7 @@ const SearchItem = prop => {
         <View style={styles.Loading}>
           <Text style={styles.NointernetText}>{Strings.Offline.No_Intenet}</Text>
         <View style={styles.Lottie}>
-          <LottieView
+        <LottieView
         source={require('./129246-no-internet-connection.json')}
         autoPlay
         loop={true}
@@ -90,15 +90,12 @@ const SearchItem = prop => {
       <View style={styles.noresult}><Text style={styles.noresultText}>{Strings.Search_Page.No_result} "`{searchitem}`"</Text>
       </View>
       </View>
-      
-      
     )
   }
   return (
     <View style={styles.box}>
     <Header header='Search'/>
     <View style={styles.flatlistBox}>
-      
       <FlatList
         renderItem={renderitem}
         data={data.articles}
